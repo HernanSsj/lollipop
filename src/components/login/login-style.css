@@ -24,18 +24,11 @@ html,body{
     background-color: #F9F9F9;
     border-radius: 5px;
 }
-.logo{
-    margin-top: 5px;
-}
-.logo img{
-    border-radius: 50px;
-    width: 64px;
-   
-}
+
 .heading{
     text-align: center;
     cursor: default;
-    
+    margin-top: 25px;
 }
 /* .heading h3{
     cursor: default;
@@ -45,6 +38,7 @@ html,body{
     flex-direction: column;
     width: 100%;
     align-items: center;
+    margin-top: 40px;
 }
 .input-box span{
     position: absolute;
@@ -58,7 +52,7 @@ html,body{
   width: 359px;
   border-radius: 5px; 
   outline: none;
-  border: 1px solid #d6d6d6;
+  border: none;
   text-align: left;
   text-indent: 15px;
   background-color: #EDEDED;
@@ -67,12 +61,17 @@ html,body{
     border: 2px solid #000000;
     background: #F9F9F9;
 }
+.form-input:hover{
+    background: #D4D4D4;
+}
 .invisible{
 
     display:none;
 }
+.error-message{
+    width: 100%;
+}
 .error-message span{
-
     color: #F33501;
     margin-left: 45px;
 }
@@ -96,7 +95,7 @@ html,body{
     border: 2px solid #000000;
 }
 .twitter{
-    background: #126AEE;
+    background: #63A9EC;
 }
 .google{
     background: #FFFFFF;
@@ -110,6 +109,9 @@ html,body{
     padding-left: 45px;
     cursor: default;
 }
+.check span{
+  line-height: 130%;
+}
 
 .buttom-box{
     display: flex;
@@ -121,20 +123,27 @@ html,body{
 .buttom-box button{
     width: 81px;
 	height: 81px;
-	border: none;
-    background: #4c2882;
+    border:2px solid #EDEDED;
     border-radius: 30px; 
     cursor: pointer;
+    background: linear-gradient(to top, #000 50%, #fff 50%);
+    background-size: 100% 200%;
+    background-position: bottom left;
+    transition: all .5s ease-out;
 }
 .buttom-box button:disabled{
     width: 81px;
 	height: 81px;
 	border:2px solid #EDEDED;
-    background: #F9F9F9;
     border-radius: 30px; 
     cursor: pointer;
+    background: linear-gradient(to top, #000 50%, #fff 50%);
+    background-size: 100% 200%;
+    background-position: top left;
+    transition: all .5s ease-out;
 }
 
+  
 .link-box {
     display: flex;
     flex-direction: column;
@@ -144,6 +153,13 @@ html,body{
 }
 .link-box a{
     color: #B2B2B2;
+    font-weight:bold;
+    text-decoration:none;
+    cursor: pointer;
+     
+}
+.link-box a:hover{
+    color: #000000;
     font-weight:bold;
     text-decoration:none;
     cursor: pointer;

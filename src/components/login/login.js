@@ -2,7 +2,8 @@ import React, {useState, useEffect, useCallback} from "react"
 import './login-style.css';
 import logo from '../../images/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {faTwitter, faGoogle, faFacebook} from "@fortawesome/free-brands-svg-icons";
 
 const Login = ()=>{
      
@@ -46,14 +47,14 @@ const Login = ()=>{
     const revealedPasswordIcon = <FontAwesomeIcon icon={faEye} />
     const invisiblePasswordIcon = <FontAwesomeIcon icon={faEyeSlash}/>
     const loginIcon = <FontAwesomeIcon icon={faArrowRight} size={"3x"} color={`${data.user && data.password ? "#F9F9F9"  : "#EDEDED"}`}/>
+    const twitterIcon = <FontAwesomeIcon icon={faTwitter} size={"2x"} color={"#FFFFFF"}/>
+    const googleIcon = <FontAwesomeIcon icon={faGoogle} size={"2x"} color={"#000000"}/>
+    const facebookIcon = <FontAwesomeIcon icon={faFacebook} size={"2x"} color={"#FFFFFF"}/>
     return(
         <section className="login-form">
                 <div className="container">
-                    <div className="logo">
-                        <img src={logo}></img>
-                    </div>
                     <div className="heading">
-                        <h3>Iniciar sesión</h3>
+                        <h2>Iniciar sesión</h2>
                     </div>
                     <div className="input-box">
                         <input className="form-input" placeholder="Usuario" maxlength = "16" value={data.user} onChange={fillUSer}></input>
@@ -64,9 +65,9 @@ const Login = ()=>{
                         <span>Tu usuario o contraseña son incorrectos</span>
                     </div>
                     <div className="social-box">
-                        <button className="twitter">T</button>
-                        <button className="google">G</button>
-                        <button className="facebook">F</button>
+                        <button className="twitter">{twitterIcon}</button>
+                        <button className="google">{googleIcon}</button>
+                        <button className="facebook">{facebookIcon}</button>
                     </div>
                     <div className="check">
                         <input className="stay-online" type="checkbox"></input>

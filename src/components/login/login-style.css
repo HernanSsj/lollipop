@@ -1,0 +1,151 @@
+*{
+    box-sizing: border-box;
+}
+
+html,body{
+    padding: 0;
+    margin: 0;
+}
+
+.login-form{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../images/login-background.jpg');
+    background-size: cover;
+}
+.container{
+    min-height: 550px;
+    min-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+}
+.logo{
+    margin-top: 5px;
+}
+.logo img{
+    border-radius: 50px;
+    width: 64px;
+   
+}
+.heading{
+    text-align: center;
+    cursor: default;
+    
+}
+/* .heading h3{
+    cursor: default;
+} */
+.input-box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.input-box span{
+    position: absolute;
+    z-index: 40;
+    margin-top: 109px;
+    margin-left: 300px;
+}
+.form-input{
+  margin: 10px;
+  height: 59px;
+  width: 359px;
+  border-radius: 5px; 
+  outline: none;
+  border: 1px solid #d6d6d6;
+  text-align: left;
+  text-indent: 15px;
+  background-color: #EDEDED;
+}
+.form-input:focus{
+    border: 2px solid #000000;
+    background: #F9F9F9;
+}
+.invisible{
+
+    display:none;
+}
+.error-message span{
+
+    color: #F33501;
+    margin-left: 45px;
+}
+.social-box{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.social-box button{
+    height: 41px;
+    width: 114px;
+    border:1px solid #ededed;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+
+}
+.social-box button:hover{
+    border: 2px solid #000000;
+}
+.twitter{
+    background: #126AEE;
+}
+.google{
+    background: #FFFFFF;
+}
+.facebook{
+    background: #1877F2;
+}
+.check{
+    display: flex;
+    width: 100%;
+    padding-left: 45px;
+    cursor: default;
+}
+
+.buttom-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+.buttom-box button{
+    width: 81px;
+	height: 81px;
+	border: none;
+    background: #4c2882;
+    border-radius: 30px; 
+    cursor: pointer;
+}
+.buttom-box button:disabled{
+    width: 81px;
+	height: 81px;
+	border:2px solid #EDEDED;
+    background: #F9F9F9;
+    border-radius: 30px; 
+    cursor: pointer;
+}
+
+.link-box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.link-box a{
+    color: #B2B2B2;
+    font-weight:bold;
+    text-decoration:none;
+    cursor: pointer;
+     
+}

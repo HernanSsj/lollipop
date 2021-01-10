@@ -1,0 +1,14 @@
+.App{
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+.nav{
+    height: 8%;
+   
+}
+.content{
+    height: 92%;
+}

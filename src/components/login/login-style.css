@@ -46,28 +46,67 @@ html,body{
     margin-top: 109px;
     margin-left: 300px;
 }
-.form-input{
+.password-input, .username-input{
   margin: 10px;
   height: 59px;
   width: 359px;
   border-radius: 5px; 
   outline: none;
   border: none;
-  text-align: left;
-  text-indent: 15px;
+  text-indent: 5px;
+  font-weight: bold;
   background-color: #EDEDED;
 }
-.form-input:focus{
+.pwd-label{
+    position: absolute;
+    z-index: 20;
+    margin-right: 229px;
+    margin-top: 105px;
+   color: #525252;
+   transition: all 0.3s ease;
+   pointer-events: none;
+}
+.usr-label{
+    position: absolute;
+    z-index: 20;
+    margin-right: 250px;
+    margin-top: 27px;
+    color: #525252;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+.password-input:focus, .username-input:focus{
     border: 2px solid #000000;
     background: #F9F9F9;
+    box-shadow: none;
 }
-.form-input:hover{
+.password-input:invalid{
+    box-shadow: none;
+}
+
+.username-input:focus + .usr-label, .username-input:valid + .usr-label{
+    transform: translate(-50%,-80%);
+    font-size: smaller;
+    
+}
+
+.password-input:focus + .pwd-label, .password-input:valid + .pwd-label{
+    transform: translate(-34%,-80%);
+    font-size: smaller;
+    
+}
+
+.password-input:hover, .username-input:hover{
     background: #D4D4D4;
 }
+
+
 .invisible{
 
     display:none;
 }
+
+
 .error-message{
     width: 100%;
 }
@@ -92,7 +131,7 @@ html,body{
 
 }
 .social-box button:hover{
-    border: 2px solid #000000;
+    filter: brightness(95%);
 }
 .twitter{
     background: #63A9EC;
@@ -123,10 +162,11 @@ html,body{
 .buttom-box button{
     width: 81px;
 	height: 81px;
-    border:2px solid #EDEDED;
+    border: none;
+    outline: none;
     border-radius: 30px; 
     cursor: pointer;
-    background: linear-gradient(to top, #000 50%, #fff 50%);
+    background: linear-gradient(to top, #84cdfa 50%, #F9F9F9 50%);
     background-size: 100% 200%;
     background-position: bottom left;
     transition: all .5s ease-out;
@@ -137,7 +177,7 @@ html,body{
 	border:2px solid #EDEDED;
     border-radius: 30px; 
     cursor: pointer;
-    background: linear-gradient(to top, #000 50%, #fff 50%);
+    background: linear-gradient(to top, #84cdfa 50%, #F9F9F9 50%);
     background-size: 100% 200%;
     background-position: top left;
     transition: all .5s ease-out;

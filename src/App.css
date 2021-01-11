@@ -3,6 +3,8 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-image: url('./images/login-background.jpg');
+    background-size: cover; 
 
 }
 .nav{

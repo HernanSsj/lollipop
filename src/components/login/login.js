@@ -64,7 +64,7 @@ const Login = ()=>{
                         <h2>Iniciar sesión</h2>
                     </div>
                     <div className="input-box">
-                        <input className="username-input" required={true} maxLength = "16" value={data.user} onChange={fillUSer} autofocus="autofocus"></input>
+                        <input className="username-input" required={true} maxLength = "16" value={data.user} onChange={fillUSer} autoFocus="autofocus"></input>
                         <label className="usr-label">Usuario</label>
                         <input className="password-input"  required={true} maxLength = "32" value={data.password} onChange={fillPassword} type={`${showPassword ? "text"  : "password"}`}></input>
                         <label className="pwd-label">Contraseña</label>

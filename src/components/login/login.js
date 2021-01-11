@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useCallback} from "react"
 import './login-style.css';
-import logo from '../../images/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faArrowRight, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {faTwitter, faGoogle, faFacebook} from "@fortawesome/free-brands-svg-icons";
 import Checkbox from "react-custom-checkbox";
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 
 const Login = ()=>{
      
@@ -16,7 +16,9 @@ const Login = ()=>{
     })
     const [error, setError] = useState()
     const [showPassword, SetShowPassword] = useState(false)
-    const [stayOnline, SetstayOnline] = useState(true)
+    const [stayOnline, SetstayOnline] = useState(false)
+    const [loading, SetLoading] = useState(false)
+
     const fillUSer =  useCallback(e => {
         
         setData({...data, user: e.target.value})
@@ -28,28 +30,26 @@ const Login = ()=>{
         console.log(data.password)
       }, [data]);      
 
-    const fillError =  useCallback(error => {
-        setError(true)
-      }, [error]);    
+    const fillError =  ()=> setError(true)
+    
 
     const viewPassword = useCallback( e=>{
         SetShowPassword(!showPassword)
     },[showPassword])
     const saveSession = useCallback( e=>{
         SetstayOnline(!stayOnline)
-        console.log(stayOnline)
     },[stayOnline])
     const authenticate = useCallback(data =>{
         //Dispatch auth
         //To do
         try {
-            console.log("hey")
+           SetLoading(!loading)
          } catch (error) {
              fillError()
          }
         }
       ,[data]);
-    
+    useEffect(()=>console.log("EStado de recordar pass",stayOnline),[stayOnline])
     const revealedPasswordIcon = <FontAwesomeIcon icon={faEye} />
     const invisiblePasswordIcon = <FontAwesomeIcon icon={faEyeSlash}/>
     const loginIcon = <FontAwesomeIcon icon={faArrowRight} size={"3x"} color={`${data.user && data.password ? "#F9F9F9"  : "#EDEDED"}`}/>
@@ -64,7 +64,7 @@ const Login = ()=>{
                         <h2>Iniciar sesión</h2>
                     </div>
                     <div className="input-box">
-                        <input className="username-input" required={true} maxLength = "16" value={data.user} onChange={fillUSer}></input>
+                        <input className="username-input" required={true} maxLength = "16" value={data.user} onChange={fillUSer} autofocus="autofocus"></input>
                         <label className="usr-label">Usuario</label>
                         <input className="password-input"  required={true} maxLength = "32" value={data.password} onChange={fillPassword} type={`${showPassword ? "text"  : "password"}`}></input>
                         <label className="pwd-label">Contraseña</label>
@@ -101,11 +101,14 @@ const Login = ()=>{
                         />
                     </div>
                     <div className="buttom-box">
-                        <button disabled={data.user && data.password ? false : true} onClick={authenticate}>{loginIcon}</button>
+                            {loading?
+                            <Loader type="Rings" color="#84cdfa"height={81} width={81}/>:
+                            <button disabled={data.user && data.password ? false : true} onClick={authenticate}>{loginIcon}</button>
+                            }
                     </div>
                     <div className="link-box">
-                        <a href="#">¿Tienes problemas para iniciar sesion?</a>
-                        <a href="#">Crear una cuenta</a>
+                        <a href="www.google.com">¿Tienes problemas para iniciar sesion?</a>
+                        <a href="www.google.com">Crear una cuenta</a>
                     </div>
                 </div>
         </section>

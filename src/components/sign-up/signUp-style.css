@@ -1,13 +1,13 @@
 
 
-.login-form{
+.register-form{
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
 }
-.container{
+.register-container{
     min-height: 550px;
     min-width: 450px;
     display: flex;
@@ -25,21 +25,17 @@
 /* .heading h3{
     cursor: default;
 } */
-.input-box{
+.register-input-box{
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
-    margin-top: 40px;
+    justify-content: space-evenly;
+    margin-top: 10px;
 }
-.input-box span{
-    position: absolute;
-    z-index: 40;
-    margin-top: 109px;
-    margin-left: 300px;
-}
-.password-input, .username-input{
-  margin: 10px;
+
+.register-name-input, .register-email-input, .register-password-input, .register-repeat-password-input{
+    margin-top: 10px;
   height: 59px;
   width: 359px;
   border-radius: 5px; 
@@ -49,25 +45,9 @@
   font-weight: bold;
   background-color: #EDEDED;
 }
-.pwd-label{
-    position: absolute;
-    z-index: 20;
-    margin-right: 229px;
-    margin-top: 105px;
-   color: #525252;
-   transition: all 0.3s ease;
-   pointer-events: none;
-}
-.usr-label{
-    position: absolute;
-    z-index: 20;
-    margin-right: 250px;
-    margin-top: 27px;
-    color: #525252;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-.password-input:focus, .username-input:focus{
+
+
+.register-name-input:focus, .register-email-input:focus , .register-password-input:focus , .register-repeat-password-input:focus{
     border: 2px solid #000000;
     background: #F9F9F9;
     box-shadow: none;
@@ -76,20 +56,66 @@
     box-shadow: none;
 }
 
-.username-input:focus + .usr-label, .username-input:valid + .usr-label{
+.register-password-input:hover, .register-name-input:hover, .register-email-input:hover, .register-repeat-password-input:hover{
+    background: #D4D4D4;
+}
+.register-name-label{
+    position: absolute;
+    z-index: 20;
+    margin-right: 229px;
+    margin-top: -195px;
+   color: #525252;
+   transition: all 0.3s ease;
+   pointer-events: none;
+}
+.register-name-input:focus + .register-name-label, .register-name-input:valid + .register-name-label{
     transform: translate(-50%,-80%);
     font-size: smaller;
     
 }
 
-.password-input:focus + .pwd-label, .password-input:valid + .pwd-label{
-    transform: translate(-34%,-80%);
+.register-email-label{
+    position: absolute;
+    z-index: 20;
+    margin-right: 250px;
+    margin-top: -55px;
+   color: #525252;
+   transition: all 0.3s ease;
+   pointer-events: none;
+}
+.register-email-input:focus + .register-email-label, .register-email-input:valid + .register-email-label{
+    transform: translate(-65%,-80%);
+    font-size: smaller;
+    
+}
+.register-password-label{
+    position: absolute;
+    z-index: 20;
+    margin-right: 208px;
+    margin-top: 80px;
+   color: #525252;
+   transition: all 0.3s ease;
+   pointer-events: none;
+}
+.register-password-input:focus + .register-password-label, .register-password-input:valid + .register-password-label{
+    transform: translate(-40%,-80%);
     font-size: smaller;
     
 }
 
-.password-input:hover, .username-input:hover{
-    background: #D4D4D4;
+.register-repeat-password-label{
+    position: absolute;
+    z-index: 20;
+    margin-right: 160px;
+    margin-top: 215px;
+   color: #525252;
+   transition: all 0.3s ease;
+   pointer-events: none;
+}
+.register-repeat-password-input:focus + .register-repeat-password-label, .register-repeat-password-input:valid + .register-repeat-password-label{
+    transform: translate(-25%,-80%);
+    font-size: smaller;
+    
 }
 
 
@@ -106,34 +132,6 @@
     color: #F33501;
     margin-left: 45px;
 }
-.social-box{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-}
-.social-box button{
-    height: 41px;
-    width: 114px;
-    border:1px solid #ededed;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
-
-}
-.social-box button:hover{
-    filter: brightness(95%);
-}
-.twitter{
-    background: #63A9EC;
-}
-.google{
-    background: #FFFFFF;
-}
-.facebook{
-    background: #1877F2;
-}
 .check{
     display: flex;
     width: 100%;
@@ -144,15 +142,15 @@
   line-height: 130%;
 }
 
-.buttom-box{
+.register-buttom-box{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 100px;
     width: 100%;
     height: 81px;
 }
-.buttom-box button{
+.register-buttom-box button{
     width: 81px;
 	height: 81px;
     border: none;
@@ -164,7 +162,7 @@
     background-position: bottom left;
     transition: all .5s ease-out;
 }
-.buttom-box button:disabled{
+.register-buttom-box button:disabled{
     width: 81px;
 	height: 81px;
 	border:2px solid #EDEDED;

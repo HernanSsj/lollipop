@@ -1,6 +1,7 @@
 import './App.css';
 import Login from './components/login/login'
 import Navbar from './components/navbar/navbar'
+import SignUp from './components/sign-up/signUp';
 function App() {
   return (
     <div className="App">
@@ -8,7 +9,8 @@ function App() {
         <Navbar/>
       </div>
       <div className="content">
-       <Login/>
+       {/* <Login/> */}
+       <SignUp/>
       </div>
      
     </div>

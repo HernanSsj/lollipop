@@ -8,8 +8,8 @@
     background: transparent;
 }
 .register-container{
-    min-height: 550px;
-    min-width: 450px;
+    height: 550px;
+    width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,7 @@
 }
 
 .register-name-input, .register-email-input, .register-password-input, .register-repeat-password-input{
-    margin-top: 10px;
+  margin-top: 10px;
   height: 59px;
   width: 359px;
   border-radius: 5px; 
@@ -120,33 +120,47 @@
 
 
 .invisible{
-
     display:none;
 }
 
 
-.error-message{
+.register-error-container{
     width: 100%;
+    height: 30px;
 }
-.error-message span{
+.register-error-container span{
     color: #F33501;
     margin-left: 45px;
 }
-.check{
-    display: flex;
-    width: 100%;
-    padding-left: 45px;
-    cursor: default;
+.register-name-input-error{
+    position: absolute;
+    z-index: 60;
+    margin-top: -190px;
+    margin-left: 320px;
 }
-.check span{
-  line-height: 130%;
+.register-email-input-error{
+    position: absolute;
+    z-index: 66;
+    margin-top: -55px;
+    margin-left: 320px;
 }
-
+.register-password-input-error{
+    position: absolute;
+    z-index: 68;
+    margin-top: 80px;
+    margin-left: 320px;
+}
+.register-repeated-password-input-error{
+    position: absolute;
+    z-index: 69;
+    margin-top: 215px;
+    margin-left: 320px;
+}
 .register-buttom-box{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 10px;
     width: 100%;
     height: 81px;
 }
@@ -175,24 +189,140 @@
 }
 
   
-.link-box {
+.register-link-box {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 30px;
     align-items: center;
     justify-content: center;
 }
-.link-box a{
+.register-link-box a{
     color: #B2B2B2;
     font-weight:bold;
     text-decoration:none;
     cursor: pointer;
      
 }
-.link-box a:hover{
+.register-link-box a:hover{
     color: #000000;
     font-weight:bold;
     text-decoration:none;
     cursor: pointer;
      
 }
+
+@media only screen and (max-width: 500px) {
+    .register-container{
+        height: 550px;
+        width: 350px;
+    
+    }
+    .register-name-input, .register-email-input, .register-password-input, .register-repeat-password-input{
+
+      width: 95%;
+    }
+    .register-name-input:focus + .register-name-label, .register-name-input:valid + .register-name-label{
+        transform: translate(-30%,-80%);
+        
+    }
+    .register-email-input:focus + .register-email-label, .register-email-input:valid + .register-email-label{
+        transform: translate(-33%,-80%);
+     
+        
+    }
+    .register-password-input:focus + .register-password-label, .register-password-input:valid + .register-password-label{
+        transform: translate(-20%,-80%);
+      
+        
+    }
+    .register-repeat-password-input:focus + .register-repeat-password-label, .register-repeat-password-input:valid + .register-repeat-password-label{
+        transform: translate(-12%,-80%);
+     
+    }
+
+    .register-name-input-error{
+       
+        margin-left: 300px;
+    }
+    .register-email-input-error{
+        
+        margin-left: 300px;
+    }
+    .register-password-input-error{
+       
+        margin-left: 300px;
+    }
+    .register-repeated-password-input-error{
+       
+        margin-left: 300px;
+    }
+    
+ }
+
+ @media only screen and (max-width: 300px) {
+    .register-container{
+        height: 550px;
+        width: 270px;
+    
+    }
+    .register-name-input, .register-email-input, .register-password-input, .register-repeat-password-input{
+
+        width: 95%;
+      }
+      .register-name-label{
+        margin-right: 180px;
+        margin-top: -195px;
+       
+    }
+      .register-name-input:focus + .register-name-label, .register-name-input:valid + .register-name-label{
+          transform: translate(-5%,-68%);
+          
+      }
+      .register-email-label{
+        margin-right: 190px;
+        margin-top: -60px;
+       
+    }
+      .register-email-input:focus + .register-email-label, .register-email-input:valid + .register-email-label{
+          transform: translate(-20%,-80%);
+       
+          
+      }
+      .register-password-label{
+        margin-right: 155px;
+        margin-top: 80px;
+       
+    }
+      .register-password-input:focus + .register-password-label, .register-password-input:valid + .register-password-label{
+          transform: translate(-8%,-80%);
+        
+          
+      }
+      .register-repeat-password-label{
+        margin-right: 95px;
+        margin-top: 215px;
+       
+    }
+      .register-repeat-password-input:focus + .register-repeat-password-label, .register-repeat-password-input:valid + .register-repeat-password-label{
+          transform: translate(-10%,-80%);
+       
+      }
+  
+      .register-name-input-error{
+         
+          margin-left: 220px;
+      }
+      .register-email-input-error{
+          
+        margin-left: 220px;
+      }
+      .register-password-input-error{
+         
+        margin-left: 220px;
+      }
+      .register-repeated-password-input-error{
+         
+        margin-left: 220px;
+      }
+      
+ }

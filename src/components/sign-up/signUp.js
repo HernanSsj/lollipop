@@ -24,10 +24,8 @@ const SignUp = ()=>{
         error_message: null
      })
     const [showPassword, SetShowPassword] = useState(false)
-    const [stayOnline, SetstayOnline] = useState(false)
-    const [loading, SetLoading] = useState(false)
     const [completed, setCompleted] = useState(false)
-
+    const [showCaptcha, setShowCaptcha] = useState(false)
     const fillEmail =  useCallback(e => {
         
         setData({...data, email: e.target.value})
@@ -116,14 +114,19 @@ useEffect(()=> {
      
   },[data.email])
   
+
   useEffect(()=>{
-      if(data.name && data.email && data.password && data.repeated_password && !error.error){
+    if(error.name_error || error.email_error || error.password_error || error.repeated_password_error){
+      setCompleted(false)
+    }else{
+      if(data.name && data.email && data.password && data.repeated_password){
         setCompleted(true)
-      }else{
-        setCompleted(false)
       }
       
-  },[data, error])
+    }
+   
+  }, [error])
+
     const inputErrorIcon = <FontAwesomeIcon icon={faExclamationTriangle} color={"#BE1E37"}/>
     const loginIcon = <FontAwesomeIcon icon={faArrowRight} size={"3x"} color={`${data.user && data.password ? "#F9F9F9"  : "#EDEDED"}`}/>
     return(
@@ -138,13 +141,13 @@ useEffect(()=> {
                         <input className="register-name-input" required={true} maxLength = "10" value={data.name}  onChange={fillName} autoFocus="autofocus"></input>
                         <label className="register-name-label">Nombre</label>
                         <span className={`${error.name_error ? "register-name-input-error " : "invisible"}`}>{inputErrorIcon}</span>
-                        <input className="register-email-input" required={true} maxLength = "20" value={data.email} onChange={fillEmail}></input>
+                        <input className="register-email-input" required={true} maxLength = "320" value={data.email} onChange={fillEmail}></input>
                         <label className="register-email-label">Email</label>
                         <span className={`${error.email_error ? "register-email-input-error " : "invisible"}`}>{inputErrorIcon}</span>
-                        <input className="register-password-input" required={true} maxLength = "16" value={data.password} onChange={fillPassword}></input>
+                        <input className="register-password-input"  type={"password"} required={true} maxLength = "16" value={data.password} onChange={fillPassword}></input>
                         <label className="register-password-label">Contraseña</label>
                         <span className={`${error.password_error ? "register-password-input-error " : "invisible"}`}>{inputErrorIcon}</span>
-                        <input className="register-repeat-password-input" required={true} maxLength = "16" value={data.repeated_password} onChange={fillRepeatedPassword}></input>
+                        <input className="register-repeat-password-input" type={"password"} required={true} maxLength = "16" value={data.repeated_password} onChange={fillRepeatedPassword}></input>
                         <label className="register-repeat-password-label">Repetir Contraseña</label>
                         <span className={`${error.repeated_password_error ? "register-repeated-password-input-error" : "invisible"}`}>{inputErrorIcon}</span>
                         
@@ -153,13 +156,16 @@ useEffect(()=> {
                     &nbsp;
                         <span className={`${error.error ? "register-error-message " : "invisible"}`}>{error.error_message}</span>
                     </div>
-                    {/* <ReCAPTCHA
-                        sitekey="6LcJKy4aAAAAAKpFdm41RU6VXS0TKGCFzonVjNO1"
-                        onChange={fillEmail}
-                          /> */}
-                    <div className="register-buttom-box">
+                  
+                    <div className={`${showCaptcha ? "register-captcha-container" : "invisible"}`}>
+                      <ReCAPTCHA
+                          sitekey="6LcJKy4aAAAAAKpFdm41RU6VXS0TKGCFzonVjNO1"
+                          onChange={(value)=>console.log("ReCAPTCHA", value)}
+                            />
+                    </div> 
+                    <div className={`${showCaptcha ? "invisible" : "register-buttom-box"}`}>
                             
-                            <button disabled={completed ? false : true} >{loginIcon}</button>
+                            <button onClick={()=>setShowCaptcha(true)} disabled={completed ? false : true} >{loginIcon}</button>
 
                     </div>
                     <div className="register-link-box">

@@ -5,6 +5,7 @@ import { faEye, faEyeSlash, faArrowRight, faExclamationTriangle} from "@fortawes
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import ReCAPTCHA from "react-google-recaptcha";
+import axios from 'axios'
 
 const SignUp = ()=>{
      
@@ -26,6 +27,8 @@ const SignUp = ()=>{
     const [showPassword, SetShowPassword] = useState(false)
     const [completed, setCompleted] = useState(false)
     const [showCaptcha, setShowCaptcha] = useState(false)
+    const [loading, setLoading] = useState(false)
+
     const fillEmail =  useCallback(e => {
         
         setData({...data, email: e.target.value})
@@ -126,7 +129,19 @@ useEffect(()=> {
     }
    
   }, [error])
-
+    const signUp = async (data) =>{
+   
+        setLoading(true)
+         axios.post("http://localhost:5000/register", data).then((response)=>{
+          setLoading(false)
+         console.log(response)
+       })
+       .catch(()=>{
+        setLoading(false)
+        setError({...error, error:true, email_error: true, error_message: "El email ya se encuentra en uso"})
+       })
+      
+    }
     const inputErrorIcon = <FontAwesomeIcon icon={faExclamationTriangle} color={"#BE1E37"}/>
     const loginIcon = <FontAwesomeIcon icon={faArrowRight} size={"3x"} color={`${data.user && data.password ? "#F9F9F9"  : "#EDEDED"}`}/>
     return(
@@ -153,20 +168,22 @@ useEffect(()=> {
                         
                     </div>
                     <div className={"register-error-container"}>
-                    &nbsp;
+                        &nbsp;
                         <span className={`${error.error ? "register-error-message " : "invisible"}`}>{error.error_message}</span>
                     </div>
-                  
-                    <div className={`${showCaptcha ? "register-captcha-container" : "invisible"}`}>
+                  {/* //Implementar despues */}
+                    {/* <div className={`${showCaptcha ? "register-captcha-container" : "invisible"}`}>
                       <ReCAPTCHA
                           sitekey="6LcJKy4aAAAAAKpFdm41RU6VXS0TKGCFzonVjNO1"
                           onChange={(value)=>console.log("ReCAPTCHA", value)}
                             />
-                    </div> 
-                    <div className={`${showCaptcha ? "invisible" : "register-buttom-box"}`}>
-                            
-                            <button onClick={()=>setShowCaptcha(true)} disabled={completed ? false : true} >{loginIcon}</button>
-
+                    </div>  */}
+                    {/* <div className={`${showCaptcha ? "invisible" : "register-buttom-box"}`}> */}
+                    <div className={"register-buttom-box"}>
+                            {loading?
+                            <Loader type="Rings" color="#84cdfa"height={81} width={81}/>:
+                            <button onClick={()=>signUp(data)} disabled={completed ? false : true} >{loginIcon}</button>
+                            }
                     </div>
                     <div className="register-link-box">
                         <a href="www.google.com">¿Ya tienes una cuenta?</a>

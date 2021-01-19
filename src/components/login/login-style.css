@@ -5,8 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../../images/login-background.jpg');
-    background-size: cover;
+    background: transparent;
 }
 .container{
     min-height: 550px;

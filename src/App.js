@@ -1,7 +1,15 @@
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import Login from './components/login/login'
 import Navbar from './components/navbar/navbar'
 import SignUp from './components/sign-up/signUp';
+
 function App() {
   return (
     <div className="App">
@@ -9,8 +17,18 @@ function App() {
         <Navbar/>
       </div>
       <div className="content">
-       {/* <Login/> */}
-       <SignUp/>
+        <Switch>
+            <Route path="/" exact>
+              {/* <Home /> */}
+              el Home
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
+            </Route>
+        </Switch>
       </div>
      
     </div>

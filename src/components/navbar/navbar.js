@@ -3,7 +3,7 @@ import './navbar-style.css';
 import logo from '../../images/logo4.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faChevronCircleDown} from "@fortawesome/free-solid-svg-icons";
-
+ import {Link } from "react-router-dom";
 const Navbar = ()=>{
      
     const [mobile, SetMobile] = useState(false)
@@ -15,9 +15,9 @@ const Navbar = ()=>{
                 <button className="toggle-button" onClick={show}>{menuIcon}</button>
                 <div className={mobile ? "navbar-links active" : "navbar-links" }>
                     <ul>
-                        <li><button className="to" >About</button></li>
-                        <li><button className="ton" >Home</button></li>
-                        <li><button className="on" >Contact</button></li>
+                        <li><Link to="/"><button >Home</button></Link></li>
+                        <li><Link to="/login"><button >Login</button></Link></li>
+                        <li><Link to="/signup"><button >Sign up</button></Link></li>
                     </ul>
                 </div>
             </nav>          

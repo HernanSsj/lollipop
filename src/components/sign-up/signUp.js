@@ -134,11 +134,10 @@ useEffect(()=> {
         setLoading(true)
          axios.post("http://localhost:5000/register", data).then((response)=>{
           setLoading(false)
-         console.log(response)
        })
-       .catch(()=>{
+       .catch((error)=>{
         setLoading(false)
-        setError({...error, error:true, email_error: true, error_message: "El email ya se encuentra en uso"})
+        setError({...error, error:true, email_error: true, error_message: error.response.data})
        })
       
     }

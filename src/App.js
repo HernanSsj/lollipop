@@ -9,6 +9,7 @@ import {
 import Login from './components/login/login'
 import Navbar from './components/navbar/navbar'
 import SignUp from './components/sign-up/signUp';
+import Home from './components/home/home';
 
 function App() {
   return (
@@ -19,8 +20,7 @@ function App() {
       <div className="content">
         <Switch>
             <Route path="/" exact>
-              {/* <Home /> */}
-              el Home
+              <Home /> 
             </Route>
             <Route path="/login">
               <Login />

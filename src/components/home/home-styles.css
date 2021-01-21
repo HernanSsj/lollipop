@@ -1,0 +1,11 @@
+.home-container{
+   
+    height: 150vh;
+    
+    display: flex;
+    flex-direction: column;
+}
+h1{
+    margin-top: 8vh;
+    color: white;
+}

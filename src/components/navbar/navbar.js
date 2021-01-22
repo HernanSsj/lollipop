@@ -12,7 +12,7 @@ const Navbar = ()=>{
     return(
              <nav className="navbar">
                 <div className="logo-container"></div>
-                <button className="toggle-button" onClick={show}>{menuIcon}</button>
+                
                 <div className={mobile ? "navbar-links active" : "navbar-links" }>
                     <ul>
                         <li><Link to="/"><button >Home</button></Link></li>
@@ -20,6 +20,7 @@ const Navbar = ()=>{
                         <li><Link to="/signup"><button >Sign up</button></Link></li>
                     </ul>
                 </div>
+                <button className="toggle-button" onClick={show}>{menuIcon}</button>
             </nav>          
     )
 }

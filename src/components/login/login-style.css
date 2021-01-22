@@ -1,13 +1,15 @@
 
 
 .login-form{
-    height: 100%;
+    
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
 }
 .container{
+    margin-top: 8vh;
     min-height: 550px;
     min-width: 450px;
     display: flex;

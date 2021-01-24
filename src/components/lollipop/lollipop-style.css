@@ -1,0 +1,20 @@
+.main-app-container{
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-app-container span{
+    font-size: 45px;
+    margin-top: 8vh;
+    color: white;
+}
+.main-app-container div{
+    border: 2px solid white;
+    width: 600px;
+    height: 400px;
+    background-image: url('https://media3.giphy.com/media/l0HlHJGHe3yAMhdQY/giphy.gif?cid=ecf05e47erk1n8fuxacsw62qj7aub42o6z821ofmc834tl3i&rid=giphy.gif');
+    background-size: cover;
+}

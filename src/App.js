@@ -7,31 +7,26 @@ import {
 } from "react-router-dom";
 
 import Login from './components/login/login'
-import Navbar from './components/navbar/navbar'
 import SignUp from './components/sign-up/signUp';
 import Home from './components/home/home';
+import Lollipop  from "./components/lollipop/lollipop";
+import PublicRoute  from "./components/protected-route/public-route";
+import PrivateRoute from './components/protected-route/private-route'
+import Context from './components/context/context';
 
 function App() {
   return (
     <div className="App">
-      <div className="nav">
-        <Navbar/>
-      </div>
-      <div className="content">
+      <Context>
         <Switch>
-            <Route path="/" exact>
-              <Home /> 
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signup">
-              <SignUp />
-            </Route>
+          <PublicRoute path="/" exact component={Home} isAuth={false}></PublicRoute>
+          <PublicRoute path="/login" component={Login} isAuth={true}></PublicRoute>
+          <PublicRoute path="/signup" component={SignUp} isAuth={true}></PublicRoute>
+          <PrivateRoute path='/app' component={Lollipop} isAuth={true}></PrivateRoute>
         </Switch>
-      </div>
-     
-    </div>
+      </Context>
+    
+        </div>
   );
 }
 

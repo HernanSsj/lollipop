@@ -18,3 +18,7 @@
     background-image: url('https://media3.giphy.com/media/l0HlHJGHe3yAMhdQY/giphy.gif?cid=ecf05e47erk1n8fuxacsw62qj7aub42o6z821ofmc834tl3i&rid=giphy.gif');
     background-size: cover;
 }
+.main-app-container button{
+    width: 60px;
+    height: 20px;
+}

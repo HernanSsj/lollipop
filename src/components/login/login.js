@@ -43,7 +43,13 @@ const Login = ()=>{
         console.log("antes de intentar login", data)
         setLoading(true)
          axios.post("http://localhost:5000/login", data, {withCredentials: true}).then((response)=>{
-         if(response.status===200) history.push("/app")
+         if(response.status===200) {
+            axios.get('http://localhost:5000/user', {withCredentials: true}).then((response)=>{
+                response.data ? localStorage.setItem('user', JSON.stringify(response.data)) :  localStorage.removeItem('user')
+                history.push("/app")
+            })
+           
+         }
           
        })
        .catch(()=>{

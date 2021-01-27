@@ -1,5 +1,5 @@
 .navbar {
-    min-height: 8vh;
+    height: 8vh;
     display: flex;
     position: fixed;
     top: 0;
@@ -9,7 +9,6 @@
     background: transparent;
     color: #F9F9F9;
     font-family: inherit;
-    transition: all 3s ease;
 }
 
 
@@ -65,7 +64,6 @@
         flex-direction: column;
         align-items: flex-start;
         background: #333C7D;
-        transition: all 3s ease;
     }
     .navbar-links li button:hover {
         border-bottom: none;
@@ -81,7 +79,6 @@
         position: absolute;
         visibility: hidden;
         opacity: 0;
-        transition: visibility 0s, opacity .3s linear;
         width: 100%;
         background-color: #333C7D;
     }

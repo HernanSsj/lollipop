@@ -15,7 +15,7 @@ const Login = ()=>{
         password: ""
 
     })
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(true)
     const [showPassword, setShowPassword] = useState(false)
     const [stayOnline, setStayOnline] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -68,7 +68,7 @@ const Login = ()=>{
     return(
         <section className="login-form">
                 <div className="container">
-                    <div className="heading">
+                    <div className="login-heading">
                         <h2>Iniciar sesión</h2>
                     </div>
                     <div className="input-box">
@@ -78,8 +78,9 @@ const Login = ()=>{
                         <label className="pwd-label">Contraseña</label>
                         <span onClick={viewPassword}>{showPassword ? revealedPasswordIcon : invisiblePasswordIcon}</span>
                     </div>
-                    <div className={`${error ? "error-message " : "invisible"}`}>
-                        <span>Tu usuario o contraseña son incorrectos</span>
+                    <div className={"login-error-message-container"}>
+                        &nbsp;
+                        <span className={`${error ? "error-message " : "invisible"}`}>Usuario o contraseña incorrectos</span>
                     </div>
                     <div className="social-box">
                         <button className="twitter">{twitterIcon}</button>
@@ -115,7 +116,7 @@ const Login = ()=>{
                             }
                     </div>
                     <div className="link-box">
-                        <a href="www.google.com">¿Tienes problemas para iniciar sesion?</a>
+                        <a href="www.google.com">¿Problemas para iniciar sesion?</a>
                         <a href="www.google.com">Crear una cuenta</a>
                     </div>
                 </div>

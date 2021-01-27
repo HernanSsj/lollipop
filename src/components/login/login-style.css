@@ -10,8 +10,8 @@
 }
 .container{
     margin-top: 8vh;
-    min-height: 550px;
-    min-width: 450px;
+    height: 562px;
+    width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,10 +19,10 @@
     border-radius: 5px;
 }
 
-.heading{
+.login-heading{
     text-align: center;
     cursor: default;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 /* .heading h3{
     cursor: default;
@@ -32,7 +32,7 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 .input-box span{
     position: absolute;
@@ -63,7 +63,7 @@
 .usr-label{
     position: absolute;
     z-index: 20;
-    margin-right: 250px;
+    margin-right: 271px;
     margin-top: 27px;
     color: #525252;
     transition: all 0.3s ease;
@@ -79,7 +79,7 @@
 }
 
 .username-input:focus + .usr-label, .username-input:valid + .usr-label{
-    transform: translate(-50%,-80%);
+    transform: translate(-60%,-80%);
     font-size: smaller;
     
 }
@@ -101,12 +101,18 @@
 }
 
 
-.error-message{
+.login-error-message-container{
+
     width: 100%;
+    height: 30px;
+    display: flex;
+    margin-left: 85px;
+    align-content: flex-start;
+    
 }
-.error-message span{
+.login-error-message-container span{
     color: #F33501;
-    margin-left: 45px;
+    
 }
 .social-box{
     display: flex;
@@ -199,4 +205,84 @@
     text-decoration:none;
     cursor: pointer;
      
+}
+
+@media only screen and (max-width: 500px) {
+    .container{
+        height: 562px;
+        width: 350px;
+    
+    }
+    .username-input, .password-input{
+
+        width: 95%;
+      }
+      .username-input:focus + .usr-label, .username-input:valid + .usr-label{
+        transform: translate(-30%,-80%);
+        font-size: smaller;
+        
+    }
+    
+    .password-input:focus + .pwd-label, .password-input:valid + .pwd-label{
+        transform: translate(-20%,-80%);
+        font-size: smaller;
+        
+    }
+    .login-error-message-container{
+
+        width: 100%;
+        height: 30px;
+        display: flex;
+        margin-left: 15px;
+        align-content: flex-start;
+        
+    }
+    
+}  
+
+@media only screen and (max-width: 300px) {
+    .container{
+        height: 580px;
+        width: 270px;
+    
+    }
+    .username-input, .password-input{
+
+        width: 95%;
+      }
+      .username-input:focus + .usr-label, .username-input:valid + .usr-label{
+        transform: translate(-40%,-80%);
+        font-size: smaller;
+        
+    }
+    
+    .password-input:focus + .pwd-label, .password-input:valid + .pwd-label{
+        transform: translate(-30%,-80%);
+        font-size: smaller;
+        
+    }
+    .pwd-label{
+        position: absolute;
+        z-index: 20;
+        margin-right: 130px;
+        margin-top: 105px;
+       color: #525252;
+       transition: all 0.3s ease;
+       pointer-events: none;
+    }
+    .usr-label{
+        position: absolute;
+        z-index: 20;
+        margin-right: 180px;
+        margin-top: 27px;
+        color: #525252;
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+    .input-box span{
+        position: absolute;
+        z-index: 40;
+        margin-top: 109px;
+        margin-left: 220px;
+    }
 }

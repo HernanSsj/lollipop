@@ -1,21 +1,22 @@
 
 import {Route, Redirect} from 'react-router-dom'
 import Navbar from '../navbar/navbar'
+import { useSelector } from "react-redux";
 
 function PublicRoute({component: Component, ...rest}){
     
-    let user = JSON.parse(localStorage.getItem('user'));
-
+    const user = useSelector((state)=>state.user)
+    console.log("Entered public route")
     return <Route {...rest}
             render={
                 (props)=>{
-                    if(!user?.id){
-                        return <><Navbar/><Component/> </>
-                    }
-
-                    return(
+                    if(user?.id){
+                        return(
                             <Redirect to="/app"/>
                         )
+                    
+                    }
+                    return <><Navbar/><Component/> </>
                     
                 }
             } />

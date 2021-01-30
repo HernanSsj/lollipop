@@ -7,7 +7,8 @@ import Checkbox from "react-custom-checkbox";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import axios from 'axios'
-import { useHistory } from "react-router"
+import { useHistory} from "react-router"
+import {Link} from 'react-router-dom'
 const Login = ()=>{
     let history = useHistory()
     const [data, setData] = useState({
@@ -84,7 +85,10 @@ const Login = ()=>{
                     </div>
                     <div className="social-box">
                         <button className="twitter">{twitterIcon}</button>
-                        <button className="google">{googleIcon}</button>
+                        <Link to='auth/google'>
+                          <button className="google">{googleIcon}</button>
+                        </Link>
+                        
                         <button className="facebook">{facebookIcon}</button>
                     </div>
                     <div className="check">

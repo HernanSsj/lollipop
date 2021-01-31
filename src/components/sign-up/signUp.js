@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faArrowRight, faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
-import ReCAPTCHA from "react-google-recaptcha";
 import axios from 'axios'
 
 const SignUp = ()=>{

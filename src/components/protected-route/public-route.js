@@ -10,7 +10,7 @@ function PublicRoute({component: Component, ...rest}){
     return <Route {...rest}
             render={
                 (props)=>{
-                    if(user?.id){
+                    if(user){
                         return(
                             <Redirect to="/app"/>
                         )

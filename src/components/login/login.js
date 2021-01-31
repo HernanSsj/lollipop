@@ -85,11 +85,12 @@ const Login = ()=>{
                     </div>
                     <div className="social-box">
                         <button className="twitter">{twitterIcon}</button>
-                        <Link to='auth/google'>
-                          <button className="google">{googleIcon}</button>
-                        </Link>
-                        
-                        <button className="facebook">{facebookIcon}</button>
+                        {/* <Link to='auth/google'> */}
+                          <button className="google" onClick={() => (window.location.href = "http://localhost:3000/auth/google")}>{googleIcon}</button>
+                        {/* </Link> */}
+                        {/* <Link to='auth/facebook'> */}
+                            <button className="facebook" onClick={() => (window.location.href = "http://localhost:3000/auth/facebook")}>{facebookIcon}</button>
+                        {/* </Link> */}
                     </div>
                     <div className="check">
                         <Checkbox

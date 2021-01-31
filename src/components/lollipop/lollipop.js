@@ -2,13 +2,18 @@
 import axios from 'axios'
 import './lollipop-style.css'
 import { useHistory } from "react-router"
+import {useDispatch} from 'react-redux'
+import {deleteUser} from '../../actions/users'
 const Lollipop =  ()=>{
+    const dispatch = useDispatch()
     let history = useHistory()
    const logout = () => {
        
     axios.get('http://localhost:5000/logout', {withCredentials: true}).then(()=>{
-        localStorage.removeItem('user')
-        history.push("/")
+        
+        dispatch(deleteUser())
+
+        // history.push("/")
     })
    }
     return <div className='main-app-container'>

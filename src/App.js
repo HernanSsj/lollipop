@@ -33,8 +33,8 @@ function App() {
           <PublicRoute path='/login' component={Login}/>
           <PublicRoute path='/signup' component={SignUp}/>
           <PrivateRoute path='/app' component={Lollipop}/>
-          //EL usuario de manera manual puede entrar al link no encontre fix
-          <Route exact path="/auth/google" render={() => (window.location.href = "http://localhost:3000/auth/google")} />
+          {/* <Route exact path="/auth/google" render={() => (window.location.href = "http://localhost:3000/auth/google")} />
+          <Route exact path="/auth/facebook" render={() => (window.location.href = "http://localhost:3000/auth/facebook")} /> */}
      
        
     </div>

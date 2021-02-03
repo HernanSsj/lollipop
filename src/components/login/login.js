@@ -8,9 +8,12 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import axios from 'axios'
 import { useHistory} from "react-router"
-import {Link} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {getUser} from '../../actions/users'
 const Login = ()=>{
+    const dispatch = useDispatch()
     let history = useHistory()
+
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -41,14 +44,11 @@ const Login = ()=>{
     },[stayOnline])
 
     const authenticate = async (data) =>{
-        console.log("antes de intentar login", data)
+        
         setLoading(true)
          axios.post("http://localhost:5000/login", data, {withCredentials: true}).then((response)=>{
          if(response.status===200) {
-            axios.get('http://localhost:5000/user', {withCredentials: true}).then((response)=>{
-                response.data ? localStorage.setItem('user', JSON.stringify(response.data)) :  localStorage.removeItem('user')
-                history.push("/app")
-            })
+           dispatch(getUser())
            
          }
           
@@ -59,6 +59,18 @@ const Login = ()=>{
        })
       
     }
+
+    const popUpLogin = (url) => {
+        window.open(url,"mywindow","location=1,status=1,scrollbars=1,toolbar=no, menubar=no, width=800,height=800");
+       let listener = window.addEventListener('message', (message) => {
+           if(message.data){
+            dispatch(getUser())
+           }
+          
+       });
+       
+       }
+  
     const revealedPasswordIcon = <FontAwesomeIcon icon={faEye} />
     const invisiblePasswordIcon = <FontAwesomeIcon icon={faEyeSlash}/>
     const loginIcon = <FontAwesomeIcon icon={faArrowRight} size={"3x"} color={`${data.user && data.password ? "#F9F9F9"  : "#EDEDED"}`}/>
@@ -84,13 +96,9 @@ const Login = ()=>{
                         <span className={`${error ? "error-message " : "invisible"}`}>Usuario o contraseña incorrectos</span>
                     </div>
                     <div className="social-box">
-                        <button className="twitter">{twitterIcon}</button>
-                        {/* <Link to='auth/google'> */}
-                          <button className="google" onClick={() => (window.location.href = "http://localhost:3000/auth/google")}>{googleIcon}</button>
-                        {/* </Link> */}
-                        {/* <Link to='auth/facebook'> */}
-                            <button className="facebook" onClick={() => (window.location.href = "http://localhost:3000/auth/facebook")}>{facebookIcon}</button>
-                        {/* </Link> */}
+                        <button className="twitter"onClick={() => popUpLogin('/auth/twitter')}>{twitterIcon}</button>
+                        <button className="google" onClick={() => popUpLogin('/auth/google')}>{googleIcon}</button>
+                        <button className="facebook" onClick={()=>popUpLogin('/auth/facebook')}>{facebookIcon}</button>
                     </div>
                     <div className="check">
                         <Checkbox

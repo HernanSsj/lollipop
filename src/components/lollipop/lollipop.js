@@ -4,7 +4,8 @@ import './lollipop-style.css'
 import { useHistory } from "react-router"
 import {useDispatch} from 'react-redux'
 import {deleteUser} from '../../actions/users'
-const Lollipop =  ()=>{
+const Lollipop =  (props)=>{
+  
     const dispatch = useDispatch()
     let history = useHistory()
    const logout = () => {
@@ -18,6 +19,7 @@ const Lollipop =  ()=>{
    }
     return <div className='main-app-container'>
         <span>Work in progress</span>
+        <span>{props.logged}</span>
          <div className='main-app-gif'>
         </div>
         <button onClick={logout}>Logout</button>

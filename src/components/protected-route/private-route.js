@@ -10,7 +10,7 @@ function PrivateRoute({component: Component, ...rest}){
             render={
                 (props)=>{
                     if(user){
-                        return <Component/>
+                        return <Component logged={user}/>
                     }else{
                         return(
                             <Redirect to= "/"/>

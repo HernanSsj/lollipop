@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 function PublicRoute({component: Component, ...rest}){
     
     const user = useSelector((state)=>state.user)
-    console.log("Entered public route")
+    console.log("Entered public route", user)
     return <Route {...rest}
             render={
                 (props)=>{

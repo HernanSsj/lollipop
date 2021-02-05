@@ -5,9 +5,10 @@ import { faEye, faEyeSlash, faArrowRight, faExclamationTriangle} from "@fortawes
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import axios from 'axios'
+import { Link, useHistory} from 'react-router-dom'
 
 const SignUp = ()=>{
-     
+     let history= useHistory()
     const [data, setData] = useState({
        name: "",
        email: "",
@@ -131,12 +132,16 @@ useEffect(()=> {
     const signUp = async (data) =>{
    
         setLoading(true)
-         axios.post("http://localhost:5000/register", data).then((response)=>{
-          setLoading(false)
+         axios.post("http://localhost:5000/auth/register", data).then((response)=>{
+          setTimeout(function(){
+            setLoading(false)
+            history.push('/login')
+        }, 2000);
+        
        })
        .catch((error)=>{
         setLoading(false)
-        setError({...error, error:true, email_error: true, error_message: error.response.data})
+        setError({...error, error:true, email_error: true, error_message: "Email ya en uso"})
        })
       
     }
@@ -184,7 +189,7 @@ useEffect(()=> {
                             }
                     </div>
                     <div className="register-link-box">
-                        <a href="www.google.com">¿Ya tienes una cuenta?</a>
+                        <Link to={'/login'}><a href="#">¿Ya tienes una cuenta?</a> </Link>
                     </div>
                 </div>
         </section>

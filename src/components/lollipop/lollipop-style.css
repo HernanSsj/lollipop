@@ -1,4 +1,5 @@
 .main-app-container{
+    width: 100vw;
     height: 100vh;
     background: transparent;
     display: flex;
@@ -7,18 +8,22 @@
     align-items: center;
 }
 .main-app-container span{
-    font-size: 45px;
+    font-size: 20px;
     margin-top: 8vh;
     color: white;
+    display: flex;
 }
-.main-app-container div{
-    border: 2px solid white;
+.main-app-container img{
     width: 600px;
-    height: 400px;
-    background-image: url('https://media3.giphy.com/media/l0HlHJGHe3yAMhdQY/giphy.gif?cid=ecf05e47erk1n8fuxacsw62qj7aub42o6z821ofmc834tl3i&rid=giphy.gif');
-    background-size: cover;
+    height: auto;
 }
 .main-app-container button{
     width: 60px;
     height: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .main-app-container img{
+        width: 90%;
+    }
 }

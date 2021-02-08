@@ -4,12 +4,12 @@
 }
 
 
-.about{
+.about-section{
     margin-top: 8vh;
     height: 92vh;
     display: flex;
-   justify-content: center;
-   align-items: center;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .description{
     display: flex;
@@ -31,14 +31,13 @@
     border: none;
     color: white;
     font-size: 15px;
+    font-weight: bold;
     background-color:#202164;
 }
 .image-container{
     display: flex;
     width: 400px;
     height: 381px;
-    margin-left: 150px;
-
    
 }
 .image-container img {
@@ -47,8 +46,33 @@
 }
 
 @media all and (max-width: 768px) {
-    .about{
+    .about-section{
         flex-direction: column-reverse;
     }
 
+}
+
+@media only screen and (max-width: 500px) {
+    .image-container{
+        width: 200px;
+        height: 181px;
+    }
+}
+
+
+@media only screen and (max-width: 300px) {
+    .image-container{
+        width: 150px;
+        height: 141px;
+    }
+    .description span{
+        color: white;
+        font-size: 20px;
+        width: 280px;
+        align-self: center;
+    }
+    .description h2{
+        color: white;
+        width: 280px;
+    }
 }

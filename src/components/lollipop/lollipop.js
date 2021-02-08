@@ -10,18 +10,20 @@ const Lollipop =  (props)=>{
     let history = useHistory()
    const logout = () => {
        
-    axios.get('http://localhost:5000/logout', {withCredentials: true}).then(()=>{
+    axios.get('http://localhost:5000/auth/logout', {withCredentials: true}).then(()=>{
         
         dispatch(deleteUser())
 
         // history.push("/")
     })
+    .catch(()=>dispatch(deleteUser()))
    }
     return <div className='main-app-container'>
         <span>Work in progress</span>
         <span>{props.logged}</span>
-         <div className='main-app-gif'>
-        </div>
+   
+        <img width={'400px'} src={'https://media3.giphy.com/media/l0HlHJGHe3yAMhdQY/giphy.gif?cid=ecf05e47erk1n8fuxacsw62qj7aub42o6z821ofmc834tl3i&rid=giphy.gif'}></img>
+        
         <button onClick={logout}>Logout</button>
         </div>
 }

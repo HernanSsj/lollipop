@@ -8,6 +8,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import axios from 'axios'
 import { useHistory} from "react-router"
+import { Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {getUser} from '../../actions/users'
 const Login = ()=>{
@@ -19,7 +20,7 @@ const Login = ()=>{
         password: ""
 
     })
-    const [error, setError] = useState(true)
+    const [error, setError] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const [stayOnline, setStayOnline] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -46,16 +47,29 @@ const Login = ()=>{
     const authenticate = async (data) =>{
         
         setLoading(true)
-         axios.post("http://localhost:5000/login", data, {withCredentials: true}).then((response)=>{
+         axios.post("http://localhost:5000/auth/login", data, {withCredentials: true}).then((response)=>{
          if(response.status===200) {
-           dispatch(getUser())
+            setTimeout(function(){
+                setLoading(false)
+            }, 2000);
+            dispatch(getUser())
+            
            
+           
+         }else{
+            setTimeout(function(){
+                setLoading(false)
+                setError(true)
+            }, 2000);
          }
           
        })
        .catch(()=>{
-        setLoading(false)
-        setError(true)
+        setTimeout(function(){
+            setLoading(false)
+            setError(true)
+        }, 2000);
+      
        })
       
     }
@@ -129,8 +143,8 @@ const Login = ()=>{
                             }
                     </div>
                     <div className="link-box">
-                        <a href="www.google.com">¿Problemas para iniciar sesion?</a>
-                        <a href="www.google.com">Crear una cuenta</a>
+                        <a href="#">¿Problemas para iniciar sesion?</a>
+                        <Link to={'/signup'}><a href="#">Crear una cuenta</a></Link>
                     </div>
                 </div>
         </section>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from "react"
-import './home-styles.css';
+import './Home-Styles.css';
 import {useHistory} from 'react-router-dom'
 const Home = ()=>{
     let history = useHistory()

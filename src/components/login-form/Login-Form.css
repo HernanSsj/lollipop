@@ -1,13 +1,4 @@
 
-
-.login-form{
-    
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-}
 .container{
     margin-top: 8vh;
     height: 562px;
@@ -24,9 +15,7 @@
     cursor: default;
     margin-top: 10px;
 }
-/* .heading h3{
-    cursor: default;
-} */
+
 .input-box{
     display: flex;
     flex-direction: column;

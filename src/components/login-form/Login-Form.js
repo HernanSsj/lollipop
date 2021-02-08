@@ -1,20 +1,16 @@
 import React, {useState, useEffect, useCallback} from "react"
-import './login-style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash, faArrowRight, faCheck} from "@fortawesome/free-solid-svg-icons";
-import {faTwitter, faGoogle, faFacebook} from "@fortawesome/free-brands-svg-icons";
+import './Login-Form.css';
 import Checkbox from "react-custom-checkbox";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import axios from 'axios'
-import { useHistory} from "react-router"
 import { Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {getUser} from '../../actions/users'
-const Login = ()=>{
-    const dispatch = useDispatch()
-    let history = useHistory()
+import {revealedPasswordIcon, invisiblePasswordIcon, twitterIcon, facebookIcon, googleIcon, stayOnlineIcon, loginIcon, loginIconDisabled} from '../../utils/icons'
 
+const LoginForm = ()=>{
+    const dispatch = useDispatch()
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -82,18 +78,9 @@ const Login = ()=>{
            }
           
        });
-       
        }
   
-    const revealedPasswordIcon = <FontAwesomeIcon icon={faEye} />
-    const invisiblePasswordIcon = <FontAwesomeIcon icon={faEyeSlash}/>
-    const loginIcon = <FontAwesomeIcon icon={faArrowRight} size={"3x"} color={`${data.user && data.password ? "#F9F9F9"  : "#EDEDED"}`}/>
-    const twitterIcon = <FontAwesomeIcon icon={faTwitter} size={"2x"} color={"#FFFFFF"}/>
-    const googleIcon = <FontAwesomeIcon icon={faGoogle} size={"2x"} color={"#000000"}/>
-    const facebookIcon = <FontAwesomeIcon icon={faFacebook} size={"2x"} color={"#FFFFFF"}/>
-    const stayOnlineIcon = <FontAwesomeIcon icon={faCheck} color={"#F9F9F9"}/>
     return(
-        <section className="login-form">
                 <div className="container">
                     <div className="login-heading">
                         <h2>Iniciar sesión</h2>
@@ -139,17 +126,15 @@ const Login = ()=>{
                     <div className="buttom-box">
                             {loading?
                             <Loader type="Rings" color="#84cdfa"height={81} width={81}/>:
-                            <button disabled={data.email && data.password ? false : true} onClick={()=>authenticate(data)}>{loginIcon}</button>
+                            <button disabled={data.email && data.password ? false : true} onClick={()=>authenticate(data)}>{data.email && data.password ? loginIcon : loginIconDisabled}</button>
                             }
                     </div>
                     <div className="link-box">
                         <a href="#">¿Problemas para iniciar sesion?</a>
                         <Link to={'/signup'}><a href="#">Crear una cuenta</a></Link>
                     </div>
-                </div>
-        </section>
-           
+                </div>     
     )
 }
 
-export default Login
+export default LoginForm

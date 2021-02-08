@@ -10,12 +10,12 @@ import {useEffect, useState} from 'react'
 import {useDispatch} from "react-redux"
 import {getUser} from "./actions/users"
 
-import Login from './components/login/login'
-import SignUp from './components/sign-up/signUp';
-import Home from './components/home/home';
-import Lollipop  from "./components/lollipop/lollipop";
+import SignUp from './pages/SignUp/SignUp';
+import Home from './pages/Home/Home';
+import Lollipop  from "./pages/MainAppHome/lollipop";
 import PublicRoute  from "./components/protected-route/public-route";
 import PrivateRoute from './components/protected-route/private-route'
+import Login from './pages/Login/Login';
 
 
 function App() {

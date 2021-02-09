@@ -9,7 +9,7 @@ export const getUser = () => async (dispatch) =>{
         }
         
     } catch (error) {
-        console.log(error)
+        dispatch({ type: "DELETE_CURRENT"});
     }
 }
 

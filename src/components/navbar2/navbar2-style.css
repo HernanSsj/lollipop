@@ -1,0 +1,115 @@
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
+.navbar2 {
+    height: 8vh;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    background: transparent;
+    color: #F9F9F9;
+    font-family: inherit;
+    /* background: red; */
+}
+
+.left{
+    display: flex;
+}
+.rigth{
+    display: flex;
+    align-items: center;
+}
+
+.search-input{
+    height: 48px;
+    width: 148px;
+    border-radius: 50%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    border: 1px solid white;
+    z-index: 45;
+    transition: all .5s;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px ;
+    border-top-right-radius: 25px ;
+    border-bottom-right-radius: 25px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.search-input::placeholder{
+    text-align: center;
+    color: white;
+}
+
+
+.search-button{
+    margin-right: 5px;
+    background-color: transparent;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    border: 1px solid white;
+    outline: none;
+}
+
+.profile-button{
+    margin-right: 5px;
+    background-color: transparent;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    border: 1px solid white;
+    outline: none;
+}
+
+.logo-container{
+    height: 60px;
+    width: 150px;
+    background-image: url('../../images/logo4.png');
+    background-size: cover;
+}
+.navbar-links2 ul {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links2 li {
+    list-style: none;
+    
+}
+
+.navbar-links2 li button{
+    height: 100%;
+    width: 70px;
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: 5px;
+    color: #F9F9F9;
+    
+}
+.navbar-links2 li button:hover {
+    border-bottom: 1px solid #F9F9F9;
+}
+
+

@@ -1,7 +1,8 @@
 .App{
     /* background-image: url('./images/login-background.jpg');
     background-size: cover;  */
-    background: rgb(84,86,203);
-    background: radial-gradient(circle, rgba(84,86,203,1) 0%, rgba(22,24,82,1) 100%);
+    /* background: rgb(84,86,203);
+    background: radial-gradient(circle, rgba(84,86,203,1) 0%, rgba(22,24,82,1) 100%); */
+    background-color: #121212;
 
 }

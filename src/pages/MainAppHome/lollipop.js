@@ -5,10 +5,30 @@ import { useHistory } from "react-router"
 import {useDispatch} from 'react-redux'
 import {deleteUser} from '../../actions/users'
 import Navbar from '../../components/navbar2/navbar'
+import ItemCarrousel from '../../components/carrousel/Carrousel'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
+import { useEffect, useState } from 'react'
 const Lollipop =  (props)=>{
-  
+
     const dispatch = useDispatch()
     let history = useHistory()
+    const [episodes, setEpisodes] = useState({})
+    const [loading, setLoading] = useState(true)
+   useEffect(()=>{
+    async function fetchData() {
+        const response = await axios.get("https://aruppi-api.herokuapp.com/api/v3/lastEpisodes")
+       setEpisodes(response.data)
+          
+      
+       setTimeout(() => {
+               setLoading(false)
+            }, 1000);
+    }
+     
+        fetchData()
+     
+        },[])
    const logout = () => {
        
     axios.get('http://localhost:5000/auth/logout', {withCredentials: true}).then(()=>{
@@ -19,12 +39,10 @@ const Lollipop =  (props)=>{
     })
     .catch(()=>dispatch(deleteUser()))
    }
+
     return <div className='main-app-container'>
         <Navbar/>
-        <span>Work in progress</span>
-        <span>{props.logged}</span>
-   
-        <img width={'400px'} src={'https://media3.giphy.com/media/l0HlHJGHe3yAMhdQY/giphy.gif?cid=ecf05e47erk1n8fuxacsw62qj7aub42o6z821ofmc834tl3i&rid=giphy.gif'}></img>
+        {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>:<ItemCarrousel episodes={episodes}/> }
         
         <button className={"logout-button"} onClick={logout}>Logout</button>
         </div>

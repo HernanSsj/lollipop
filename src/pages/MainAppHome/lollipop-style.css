@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
 }
-.main-app-container span{
+/* .main-app-container span{
     font-size: 20px;
     margin-top: 8vh;
     color: white;
@@ -16,8 +16,9 @@
 .main-app-container img{
     width: 600px;
     height: auto;
-}
+} */
 .logout-button{
+    margin-top: 30px;
     width: 60px;
     height: 20px;
 }

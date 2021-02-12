@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash, faArrowRight, faCheck, faExclamationTriangle, faSearch, faUser} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faArrowRight, faCheck, faExclamationTriangle, faSearch, faUser, faPlayCircle} from "@fortawesome/free-solid-svg-icons";
 import {faTwitter, faGoogle, faFacebook} from "@fortawesome/free-brands-svg-icons";
 
 export const revealedPasswordIcon = <FontAwesomeIcon icon={faEye} />
@@ -13,3 +13,4 @@ export const stayOnlineIcon = <FontAwesomeIcon icon={faCheck} color={"#F9F9F9"}/
 export const inputErrorIcon = <FontAwesomeIcon icon={faExclamationTriangle} color={"#BE1E37"}/>
 export const searchIcon = <FontAwesomeIcon icon={faSearch} color={"#F9F9F9"}/>
 export const userIcon = <FontAwesomeIcon icon={faUser} color={"#F9F9F9"} />
+export const playIcon = <FontAwesomeIcon icon={faPlayCircle}/>

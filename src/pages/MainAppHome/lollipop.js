@@ -42,9 +42,9 @@ const Lollipop =  (props)=>{
 
     return <div className='main-app-container'>
         <Navbar/>
-        {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>:<ItemCarrousel episodes={episodes}/> }
+        {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>: <div className="carousel-container"><ItemCarrousel episodes={episodes}/></div> }
         
-        <button className={"logout-button"} onClick={logout}>Logout</button>
+        {/* <button className={"logout-button"} onClick={logout}>Logout</button> */}
         </div>
 }
 export default Lollipop

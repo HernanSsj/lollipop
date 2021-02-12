@@ -24,7 +24,7 @@ const ItemsCarousel = (props) => {
   return <>
               <h2 style={{color:"white"}}>Ultimos episodios</h2>
               <Carousel 
-              itemsToShow={5}
+              itemsToShow={6}
               itemsToScroll={5}
               pagination={false}
               

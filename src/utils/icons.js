@@ -13,4 +13,4 @@ export const stayOnlineIcon = <FontAwesomeIcon icon={faCheck} color={"#F9F9F9"}/
 export const inputErrorIcon = <FontAwesomeIcon icon={faExclamationTriangle} color={"#BE1E37"}/>
 export const searchIcon = <FontAwesomeIcon icon={faSearch} color={"#F9F9F9"}/>
 export const userIcon = <FontAwesomeIcon icon={faUser} color={"#F9F9F9"} />
-export const playIcon = <FontAwesomeIcon icon={faPlayCircle}/>
+export const playIcon = <FontAwesomeIcon icon={faPlayCircle} size={'3x'}/>

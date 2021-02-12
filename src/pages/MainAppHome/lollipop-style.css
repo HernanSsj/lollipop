@@ -4,8 +4,8 @@
     background: transparent;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 /* .main-app-container span{
     font-size: 20px;
@@ -22,7 +22,10 @@
     width: 60px;
     height: 20px;
 }
-
+.carousel-container{
+    margin-top: 8vh;
+    width: 100%;
+}
 @media only screen and (max-width: 768px) {
     .main-app-container img{
         width: 90%;

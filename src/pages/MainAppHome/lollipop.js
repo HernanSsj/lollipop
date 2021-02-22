@@ -9,15 +9,20 @@ import ItemCarrousel from '../../components/carrousel/Carrousel'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import { useEffect, useState } from 'react'
+import Player from '../../components/player/Player'
+import { useSelector } from "react-redux";
+
 const Lollipop =  (props)=>{
 
+    const playerState = useSelector((state)=>state.player)
     const dispatch = useDispatch()
     let history = useHistory()
     const [episodes, setEpisodes] = useState({})
     const [loading, setLoading] = useState(true)
+
    useEffect(()=>{
     async function fetchData() {
-        const response = await axios.get("https://aruppi-api.herokuapp.com/api/v3/lastEpisodes")
+        const response = await axios.get("https://aruppi.jeluchu.xyz/apis/animeflv/v1/LatestEpisodesAdded")
        setEpisodes(response.data)
           
       
@@ -41,10 +46,11 @@ const Lollipop =  (props)=>{
    }
 
     return <div className='main-app-container'>
+
         <Navbar/>
         {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>: <div className="carousel-container"><ItemCarrousel episodes={episodes}/></div> }
         
-        {/* <button className={"logout-button"} onClick={logout}>Logout</button> */}
+        <Player playing={playerState.playing} servers={playerState.servers} title={playerState.title} episode={playerState.episode}></Player>
         </div>
 }
 export default Lollipop

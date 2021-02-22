@@ -1,14 +1,27 @@
 import React, {useState, useEffect, useCallback} from "react"
 import './navbar2-style.css';
-
+import axios from 'axios'
 import {Link } from "react-router-dom";
 import {searchIcon, userIcon} from '../../utils/icons'
+import { useDispatch } from "react-redux";
+import {deleteUser} from '../../actions/users'
 const Navbar = ()=>{
      const [searching, setSearching] = useState(false)
      const [searchKey, setSearchKey] = useState("")
     // useEffect(()=>{
     //     console.log(searchKey)
     // })
+    const dispatch = useDispatch()
+    const logout = () => {
+       
+        axios.get('http://localhost:5000/auth/logout', {withCredentials: true}).then(()=>{
+            
+            dispatch(deleteUser())
+    
+            // history.push("/")
+        })
+        .catch(()=>dispatch(deleteUser()))
+       }
     return(
              <nav className="navbar2">
                 <div className="left">
@@ -39,7 +52,7 @@ const Navbar = ()=>{
                */}
                
                
-                    <button className="profile-button">{userIcon}</button>
+                    <button onClick={logout} className="profile-button">{userIcon}</button>
                 </div>
                
                 </nav>

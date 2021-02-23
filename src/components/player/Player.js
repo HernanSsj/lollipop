@@ -1,40 +1,26 @@
 import './Player-Style.css'
-import ReactPlayer from 'react-player'
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import axios from 'axios'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {togglePlay} from '../../actions/player'
 const Player = (props) =>{
+    const dispatch = useDispatch()
+    const [selectedServer, setSelectedServer] = useState(props.servers[0])
+    const [loading, setLoading] = useState(true)
     const playing = props.playing
-    // let { episode, title } = useParams();
-    // let parsedTitle =   title.replace(/-/g, ' ')
-    // const {gettingServers, setGettingServers} = useState(true)
-    // const getServer = (id) =>{
-    //     axios.get(`http://localhost:4000/api/v3/getAnimeServers/${id}`)
-    //     .then((res)=>console.log(res.data))
-    // }
-    // useEffect(()=>{
-    //     var start = window.performance.now();
-    //      axios.get(`http://localhost:4000/api/v3/getEpisodes/${parsedTitle}`)
-    //      .then((response)=>{
-    //         let found = response.data.episodes.find(function(chapter, index) {
-    //             if(chapter.episode == episode)
-    //                 return true;
-    //          });
-    //          console.log(found)
-    //         getServer(found.id)
-    //      })
-        
-    // },[])
-    console.log("player props", props)
+    console.log(props)
+    const selectionButtons = props.servers.map((server, index)=><button className={`${server.title==selectedServer.title ? "selected-select-button" : "select-button"}`} onClick={()=>setSelectedServer(props.servers[index])}>{server.title}</button>)
+    const iframe = selectedServer ? <iframe className={"iframe"} key={selectedServer.title} src={selectedServer.code} frameBorder="0" allowFullScreen></iframe> : null
    return(
        <div className={`${playing? "player-container" : "invisible"}`}>
            <div className="player-title-container">
+           <button className="salir" onClick={()=>dispatch(togglePlay())}>Exit</button>
             <span className="player-anime-title">{props.title}</span>
-            <span className="player-episode-number">{props.episode}</span>
+            <span className="player-episode-number">{`Episode ${props.episode}`}</span>
            </div>
-           <div className="server-list">Seleccion de servers</div>
-            <iframe className={"player-iframe"} src="https://streamtape.com/e/pb44XDboKzfrpZR/" frameBorder="0" allowFullScreen></iframe>
+           <div className="server-list">{selectionButtons}</div>
+           <div className={"player-iframe"}> {iframe}</div>
+           
        </div>
      
    )

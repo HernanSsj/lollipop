@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import {togglePlay} from '../../actions/player'
+import {closeIcon} from '../../utils/icons'
 const Player = (props) =>{
     const dispatch = useDispatch()
     const [selectedServer, setSelectedServer] = useState(props.servers[0])
@@ -14,7 +15,7 @@ const Player = (props) =>{
    return(
        <div className={`${playing? "player-container" : "invisible"}`}>
            <div className="player-title-container">
-           <button className="salir" onClick={()=>dispatch(togglePlay())}>Exit</button>
+           <button className="salir" onClick={()=>dispatch(togglePlay())}>{closeIcon}</button>
             <span className="player-anime-title">{props.title}</span>
             <span className="player-episode-number">{`Episode ${props.episode}`}</span>
            </div>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {togglePlay} from '../../actions/player'
 import {closeIcon} from '../../utils/icons'
 const Player = (props) =>{
+    
     const dispatch = useDispatch()
     const [selectedServer, setSelectedServer] = useState(props.servers[0])
     const [loading, setLoading] = useState(true)

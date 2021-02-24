@@ -17,7 +17,7 @@ import PublicRoute  from "./components/protected-route/public-route";
 import PrivateRoute from './components/protected-route/private-route'
 import Login from './pages/Login/Login';
 import Player from './components/player/Player';
-
+import Description from './pages/AnimeDescription/Description'
 
 function App() {
   
@@ -34,7 +34,7 @@ function App() {
           <PublicRoute path='/login' component={Login}/>
           <PublicRoute path='/signup' component={SignUp}/>
           <PrivateRoute path='/app' component={Lollipop}/>
-          <PrivateRoute path='/watch/:title/:episode' component={Player}/>
+          <PrivateRoute path='/info/:title' component={Description}/>
 
     </div>
   );

@@ -19,8 +19,8 @@ const ItemsCarousel = (props) => {
             ]
           
   console.log(props.episodes.episodes[7])
-  const render =props.episodes.episodes.map((episode, index)=> <NewEpisodeCover key={index} title={episode.title} image={episode.poster} episode={episode.episode} id={episode.id} servers={episode.servers}/>)
-  const rende2 =props.episodes.episodes.map((episode, index)=> <AnimeCover key={index} title={episode.title} image={"https://cdn.myanimelist.net/images/anime/1000/110531.jpg?s=3df5ebb6800604dc04c6a6187dd7161b"}/>)
+  const newEp =props.episodes.episodes.map((episode, index)=> <NewEpisodeCover key={index} title={episode.title} image={episode.poster} episode={episode.episode} id={episode.id} servers={episode.servers}/>)
+  const top =props.episodes.episodes.map((episode, index)=> <AnimeCover key={index} title={episode.title} image={"https://cdn.myanimelist.net/images/anime/1000/110531.jpg?s=3df5ebb6800604dc04c6a6187dd7161b"}/>)
   return <>
               <h2 style={{color:"white"}}>Ultimos episodios</h2>
               <Carousel 
@@ -30,7 +30,7 @@ const ItemsCarousel = (props) => {
               
               >
          
-          {render}
+          {newEp}
         
          </Carousel>
          <h2 style={{color:"white"}}>Top 10</h2>
@@ -42,7 +42,7 @@ const ItemsCarousel = (props) => {
        >
          
         
-         {rende2}
+         {top}
          </Carousel>
          </>
   

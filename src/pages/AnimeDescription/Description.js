@@ -15,7 +15,7 @@ const Description = (props) =>{
     const loader = <Loader type="Rings" color="#84cdfa"height={81} width={81}/>
     useEffect(()=>{
         async function fetchDescription() {
-            const response = await axios.get(`http://localhost:4000/api/v3/moreInfo/${title}`)
+            const response = await axios.get(`https://protected-reaches-41658.herokuapp.com/api/v3/moreInfo/${title}`)
          
              setInfo(response.data)
           
@@ -25,7 +25,7 @@ const Description = (props) =>{
          
             fetchDescription()
         async function fetchEpisodesList() {
-                const response = await axios.get(`http://localhost:4000/api/v3/getEpisodes/${title}`)
+                const response = await axios.get(`https://protected-reaches-41658.herokuapp.com/api/v3/getEpisodes/${title}`)
               
               setEpisodesList({...episodesList, data: response.data , loading: false})
               
@@ -35,39 +35,43 @@ const Description = (props) =>{
          
             },[])
     const genres = info ? info.genres.map((genre, index)=><button  key={index} className={"genre-button"}>{genre}</button>) : null
-     const render = episodesList.loading ? null : episodesList.data.episodes.reverse().map((episode, index)=><button  className="test" key={index} >{episode.episode}</button>) 
+     const render = episodesList.loading ? null : episodesList.data.episodes.reverse().map((episode, index)=>{
+         if(episode.episode === undefined){
+             return (
+                <div className="test" key={index} >{
+                    <span className="test2">{`Proximo Episodio: ${episode.nextEpisodeDate}`}</span>
+                }</div>
+             )
+         }else{
+             return(
+                <div className="test" key={index} >{
+                    <span className="test2">{`Episodio: ${episode.episode}`}</span>
+                }</div>
+             )
+         }
+       
+     }) 
     console.log(episodesList)
     return (
             
              <div className="anime-description-container">
                  <Navbar/>
                 
-            
+                {info ? <>
+                        
                  <div className="anime-description">
                     <div className="title-image-container">
-                        {
-                            info ?   <img className="title-image" src={info.poster} alt="anime poster"></img> : loader
-                        }
-                      
-    
+                       <img className="title-image" src={info.poster} alt="anime poster"></img>
                     </div>
                    
                     <div className="info-container">
-                        {
-                            info ? 
-                            <>
                             <span className="anime-title">{info.title}</span>
                              <div className="genres-container">
                             {genres}
                         </div>
                         <span className="sinopsis-title">Sinopsis:</span>
                         <br></br>
-                        <span className="sinopsys">{info.synopsis}</span>
-
-                            </>:
-                            loader
-                        }
-                       
+                        <span className="sinopsys">{info.synopsis}</span>                      
                     </div> 
                  </div>
                  <div className="bottom-section">
@@ -77,10 +81,12 @@ const Description = (props) =>{
                         </div>
                         <div className="selected">
                         {
-                            episodesList.loding ?  loader :  render 
+                            render 
                         }
                         </div> 
                     </div>
+                </>: loader}
+            
                 
              </div>
             

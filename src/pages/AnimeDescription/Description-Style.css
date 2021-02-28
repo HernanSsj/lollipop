@@ -1,0 +1,133 @@
+.anime-description-container{
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center; 
+    position: relative;
+}
+.anime-description{
+    display: flex;
+    margin-top: 8vh;
+    width: 100%;
+    height: 500px;
+    /* border: 2px solid red; */
+    justify-content: center;
+    /* background-color: rebeccapurple; */
+}
+
+.title-image-container{
+    margin-top: 20px;
+    width: 260px;
+    height: 370px;
+    background-color: #27242C;
+    position: relative;
+}
+.title-image{
+   
+  width: 260px;
+  height: 370px;  
+}
+.info-container{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 700px;
+    height: 370px;
+    border-radius: 10px;
+    /* border: 1px solid white; */
+    color: white;
+    background-color: #27242C;
+}
+
+.sinopsys{
+    display: inline-block;
+    width: 600px; 
+}
+.detail-spinner{
+    margin: auto;
+}
+.genres-container{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    /* background-color: red; */
+}
+.genre-button{
+    height: 30px;
+    width:auto;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid white;
+    /* background-color: #D7DADC; */
+    background-color: transparent;
+    /* color: #4A4B4C; */
+    color: white;
+    margin-left: 5px;
+}
+.anime-title{
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.bottom-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+    /* overflow: scroll; */
+    /* background-color: yellowgreen; */
+    /* background-color: white; */
+}
+.options-container{
+    margin-top: 20px;
+    width: 981px;
+    height: 30px;
+    /* background-color: yellowgreen; */
+    background-color: transparent;
+     /* background-color: red;  */
+}
+.ep{
+    height: 30px;
+    outline: none;
+    border: none;
+    /* background-color: yellowgreen; */
+    background-color: #27242C
+}
+.pj{
+    color: white;
+    margin-left: 10px;
+    height: 30px;
+    outline: none;
+    border: none;
+   
+}
+.selected{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 981px;
+    height: 300px;
+    /* background-color: yellowgreen; */
+    background-color: #27242C;
+}
+.test{
+    /* background-color: #27242C; */
+    /* background-color: rebeccapurple; */
+    display: flex;
+    color: white;
+    border-bottom: 1px solid gray;
+    height: 40px;
+    width: 100%;
+}
+.test2{
+    display: inline-block;
+    height: 40px;
+   vertical-align: middle;
+}

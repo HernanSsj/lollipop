@@ -9,7 +9,7 @@ const Home = ()=>{
         <div className="home-container">
             <div className="about-section">
                 <div className="description">
-                    <span>Anime was never that simple</span>
+                    <span className="description-span">Anime was never that simple</span>
                     <h2>With Lollipop! you can watch your favorite anime episodes and movies in a easy way.</h2>
                     <button onClick={goToLogin}>Get Started!</button>
                 </div>

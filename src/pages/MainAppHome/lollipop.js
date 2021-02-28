@@ -22,7 +22,7 @@ const Lollipop =  (props)=>{
 
    useEffect(()=>{
     async function fetchData() {
-        const response = await axios.get("https://aruppi.jeluchu.xyz/apis/animeflv/v1/LatestEpisodesAdded")
+        const response = await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestEpisodesAdded")
        setEpisodes(response.data)
           
       

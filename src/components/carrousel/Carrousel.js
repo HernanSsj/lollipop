@@ -18,9 +18,8 @@ const ItemsCarousel = (props) => {
               { width: 1750, itemsToShow: 6 },
             ]
           
-  console.log(props.episodes.episodes[7])
   const newEp =props.episodes.episodes.map((episode, index)=> <NewEpisodeCover key={index} title={episode.title} image={episode.poster} episode={episode.episode} id={episode.id} servers={episode.servers}/>)
-  const top =props.episodes.episodes.map((episode, index)=> <AnimeCover key={index} title={episode.title} image={"https://cdn.myanimelist.net/images/anime/1000/110531.jpg?s=3df5ebb6800604dc04c6a6187dd7161b"}/>)
+  const latestAnime =props.animes.animes.map((anime, index)=> <AnimeCover key={index} title={anime.title} image={anime.poster}/>)
   return <>
               <h2 style={{color:"white"}}>Ultimos episodios</h2>
               <Carousel 
@@ -33,7 +32,7 @@ const ItemsCarousel = (props) => {
           {newEp}
         
          </Carousel>
-         <h2 style={{color:"white"}}>Top 10</h2>
+         <h2 style={{color:"white"}}>Animes mas recientes</h2>
               <Carousel itemsToShow={5}
               breakPoints={breakPoints}
               itemPadding={[10,10]}
@@ -42,7 +41,7 @@ const ItemsCarousel = (props) => {
        >
          
         
-         {top}
+         {latestAnime}
          </Carousel>
          </>
   

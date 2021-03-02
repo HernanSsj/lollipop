@@ -8,7 +8,7 @@ const animeInfoUrl = props.title.replace(/\ /g, '-')
         <div className="anime-cover-container">
               <Link to={`/info/${animeInfoUrl}`}>
               <div className="cover-container">
-                    <img width={'133px'} height={'195px'} src={props.image} alt="anime cover" className="anime-cover-img"/>
+                    <img width={'133px'} height={'195px'} src={`data:image/png;base64,${props.image}`} alt="anime cover" className="anime-cover-img"/>
               </div>
               </Link>
               <div className="anime-cover-title-container">

@@ -18,12 +18,15 @@ const Lollipop =  (props)=>{
     const dispatch = useDispatch()
     let history = useHistory()
     const [episodes, setEpisodes] = useState({})
+    const [animes, setAnimes] = useState({})
     const [loading, setLoading] = useState(true)
 
    useEffect(()=>{
     async function fetchData() {
-        const response = await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestEpisodesAdded")
-       setEpisodes(response.data)
+        let latestEpisodes = await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestEpisodesAdded")
+       setEpisodes(latestEpisodes.data)
+       let latestAnime= await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestAnimeAdded")
+       setAnimes(latestAnime.data)
           
       
        setTimeout(() => {
@@ -48,7 +51,7 @@ const Lollipop =  (props)=>{
     return <div className='main-app-container'>
 
         <Navbar/>
-        {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>: <div className="carousel-container"><ItemCarrousel episodes={episodes}/></div> }
+        {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>: <div className="carousel-container"><ItemCarrousel episodes={episodes} animes={animes}/></div> }
         
         {playerState.playing ? <Player playing={playerState.playing} servers={playerState.servers} title={playerState.title} episode={playerState.episode}></Player>: null}
         </div>

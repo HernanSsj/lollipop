@@ -16,7 +16,7 @@
 .navbar2 {
     height: 8vh;
     display: flex;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -24,6 +24,7 @@
     background: transparent;
     color: #F9F9F9;
     font-family: inherit;
+    z-index: 500;
     /* background: red; */
 }
 
@@ -35,59 +36,6 @@
     align-items: center;
 }
 
-.search-input{
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
-    /* background-color: transparent; */
-    outline: none;
-    border: none;
-    color: white;
-    border: 1px solid white;
-    z-index: 45;
-    transition: all .5s;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px ;
-    border-top-right-radius: 25px ;
-    border-bottom-right-radius: 25px;
-    /* text-align: center;  */
-    text-indent: 14px;
-    margin-right: 5px;
-    background: url('../../images/magnifying-glass.svg') no-repeat scroll 13px 13px/ 20px 20px;
-   
-
-}
-
-.search-input:hover{
-    height: 48px;
-    width: 148px;
-    border-radius: 50%;
-    /* background-color: transparent; */
-    outline: none;
-    border: none;
-    color: white;
-    border: 1px solid white;
-    z-index: 45;
-    transition: all .5s;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px ;
-    border-top-right-radius: 25px ;
-    border-bottom-right-radius: 25px;
-    /* text-align: center; */
-    margin-right: 5px;
-    background: url('../../images/magnifying-glass.svg') no-repeat scroll 113px 13px/ 20px 20px;
-    /* pointer-events: none; */
-
-   
-
-}
-
-.search-input:focus{
-    background-color: red;
-    width: 148px;
-    background: url('../../images/magnifying-glass.svg') no-repeat scroll 113px 13px/ 20px 20px;
-
-}
 
 /* .search-input::placeholder{
     text-align: center;
@@ -149,5 +97,4 @@
 .navbar-links2 li button:hover {
     border-bottom: 1px solid #F9F9F9;
 }
-
 

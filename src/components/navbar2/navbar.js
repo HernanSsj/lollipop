@@ -3,11 +3,10 @@ import './navbar2-style.css';
 import axios from 'axios'
 import {Link } from "react-router-dom";
 import {searchIcon, userIcon} from '../../utils/icons'
+import Search from '../search/Search'
 import { useDispatch } from "react-redux";
 import {deleteUser} from '../../actions/users'
 const Navbar = ()=>{
-     const [searching, setSearching] = useState(false)
-     const [searchKey, setSearchKey] = useState("")
     // useEffect(()=>{
     //     console.log(searchKey)
     // })
@@ -39,12 +38,8 @@ const Navbar = ()=>{
                 </div>
                 </div>
                 <div className="rigth">
-               
-                    <input   onBlur={(e) => {setSearchKey("")}}
-                    value={searchKey}
-                   onChange={(e)=> setSearchKey(e.target.value)}
-                   maxLength={13}
-                 spellCheck="false" className={"search-input"}></input> 
+                <Search/>
+              
                     {/* <button 
                      onClick={() => setSearching(!searching)}
                      onMouseLeave={() => setSearching(!searching)}

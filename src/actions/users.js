@@ -25,7 +25,6 @@ export const deleteUser =  () => async (dispatch) =>{
 }
 
 export const setUser = ()=> async (dispatch,data)=>{
-    console.log("user data", data.user)
     try {
         dispatch({ type: "SET_CURRENT", payload: data});
     } catch (error) {

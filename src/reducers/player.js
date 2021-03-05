@@ -17,6 +17,11 @@ const playerReducer = (state=initialPlayerState, action) =>{
                     ...state, 
                     servers: action.payload
                 };
+        case "CLEAR_SERVERS":
+                return {
+                    ...state, 
+                    servers: action.payload
+                    };        
         case "ADD_TITLE":
             return {
                 ...state, title: action.payload

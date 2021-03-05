@@ -1,12 +1,15 @@
 .anime-description-container{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    background: transparent;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    align-items: center; 
-    position: relative;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    z-index: 1000;
+    color: #fff;
+    background-color: #181719;
 }
 .anime-description{
     display: flex;
@@ -39,6 +42,7 @@
     /* border: 1px solid white; */
     color: white;
     background-color: #27242C;
+    position: relative;
 }
 
 .sinopsys{
@@ -138,6 +142,20 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 400;
+    z-index: 1500;
     background-color: #27242C;
+}
+.close-description{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    right: 5px;
+    top: 5px;
+    background-color: #3D3A41;
+    border-radius: 50%;
+    color: #fff;
+    border: 2px solid #fff;
 }

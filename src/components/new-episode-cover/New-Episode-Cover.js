@@ -5,24 +5,25 @@ import {togglePlay, addNewEpisodeServers, addTitle, addEpisode} from '../../acti
 import {useDispatch} from "react-redux"
 
 const NewEpisodeCover = (props) =>{
+    const {title, poster, episode ,  id, servers} = props.info
    const dispatch = useDispatch()
    const send = ()=>{
-       dispatch(addNewEpisodeServers(props.servers))
-       dispatch(addTitle(props.title))
-       dispatch(addEpisode(props.episode))
+       dispatch(addNewEpisodeServers(servers))
+       dispatch(addTitle(title))
+       dispatch(addEpisode(episode))
        dispatch(togglePlay())
    }
     return (
         <div className="new-episode-container">
-              <span className={"episode-number"}>{`Ep. ${props.episode}`}</span>
+              <span className={"episode-number"}>{`Ep. ${episode}`}</span>
                      <div className="new-episode-image-container" onClick={()=>send()}>
                   <span className="new-anime-play-icon">{playIcon}</span>
-                  <img width={'225px'} height={'160px'} src={`data:image/png;base64, ${props.image}`} alt="anime cover" className="new-episode-img"/>
+                  <img width={'225px'} height={'160px'} src={`data:image/png;base64, ${poster}`} alt="anime cover" className="new-episode-img"/>
               </div>
           
              
             <div className="new-anime-title-container">
-                    <span className="new-anime-title">{props.title}</span> 
+                    <span className="new-anime-title">{title}</span> 
               </div> 
         </div>
       

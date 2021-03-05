@@ -18,8 +18,8 @@ const ItemsCarousel = (props) => {
               { width: 1750, itemsToShow: 6 },
             ]
           
-  const newEp =props.episodes.episodes.map((episode, index)=> <NewEpisodeCover key={index} title={episode.title} image={episode.poster} episode={episode.episode} id={episode.id} servers={episode.servers}/>)
-  const latestAnime =props.animes.animes.map((anime, index)=> <AnimeCover key={index} title={anime.title} image={anime.poster}/>)
+  const newEp =props.episodes.episodes.map((episode, index)=> <NewEpisodeCover key={index} info={episode}/>)
+  const latestAnime =props.animes.animes.map((anime, index)=> <AnimeCover key={index} info={anime}/>)
   return <>
               <h2 style={{color:"white"}}>Ultimos episodios</h2>
               <Carousel 

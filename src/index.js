@@ -15,7 +15,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = {
   key: 'root',
   storage, 
-  blacklist: ['player']
+  blacklist: ['player', 'description']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers) 

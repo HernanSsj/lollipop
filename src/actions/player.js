@@ -1,7 +1,7 @@
-import axios from 'axios'
+
 export const togglePlay = () => async (dispatch) =>{
     try {
-      console.log("dips")
+     
     dispatch({ type: "TOGGLE_PLAY"});
     
         
@@ -38,6 +38,19 @@ export const addEpisode = (episode) => async (dispatch) =>{
   try {
      
         dispatch({ type: "ADD_EPISODE", payload: episode});
+    
+      
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+
+export const cleanServers = () => async (dispatch) =>{
+ 
+  try {
+     
+        dispatch({ type: "CLEAR_SERVERS", payload: null});
     
       
   } catch (error) {

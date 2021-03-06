@@ -24,18 +24,18 @@ const Search = () =>{
         
     },[searchState.value])
  
-  const listItems = searchState.results? searchState.results.slice(0, 6).map((item, index)=> <SearchListItem index={index}image={item.image} title={item.title} type={item.type}/> ): null
+  const listItems = searchState.results? searchState.results.slice(0, 6).map((item, index)=> <SearchListItem index={index} info={item}/> ): null
     return(
         <>
         
-        <input    onBlur={(e) => {setSearchState({value:""})}}
+        <input   
                   value={searchState.value }
                   onChange={(e)=> setSearchState({value:e.target.value})}
                   maxLength={13}
                   spellCheck="false" className={"search-input"}>
         </input> 
        
-        <ul className={`${ searchState.value!= "" ? "search-results" : "invisible"}`}>
+        <ul className={`${ searchState.value!= "" ? "search-results" : "invisible"}`}  tabindex = "1" onBlur={(e) => {setSearchState({value:""})}}>
                         <li className="top"></li>
                        {
                            searchState.loading? <li className="search-loading">Cargando..</li> :listItems

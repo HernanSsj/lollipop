@@ -4,4 +4,6 @@ import user from './user';
 
 import player from './player'
 
-export const reducers = combineReducers({ user , player});
+import description from './description'
+
+export const reducers = combineReducers({ user , player, description});

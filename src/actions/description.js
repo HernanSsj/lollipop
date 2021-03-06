@@ -37,8 +37,8 @@ export const fetchDescription = (title) => async (dispatch) =>{
 }
 export const setDescription = (data) => async (dispatch) =>{
     try {
-      
-        dispatch({ type: "ADD_INFO", payload: data});
+        let info = {...data, episodes : data.episodes.reverse()}
+        dispatch({ type: "ADD_INFO", payload: info});
       
         
     } catch (error) {

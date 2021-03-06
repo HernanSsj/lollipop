@@ -21,6 +21,10 @@ const descriptionReducer = (state=initialDescriptionState, action) =>{
             return{
                 ...state, getting_servers: !state.getting_servers
             }
+        case "CLEAR_INFO":
+            return{
+                ...state, info: null
+            }
         default:
             return state;
     }

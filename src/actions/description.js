@@ -20,7 +20,7 @@ export const fetchDescription = (title) => async (dispatch) =>{
         let info = {
             poster: description.data.poster,
             debut: description.data.status,
-            episodes: episodes.data.episodes,
+            episodes: episodes.data.episodes.reverse(),
             genres: description.data.genres,
             rating: description.data.rating,
             synopsis: description.data.synopsis,
@@ -61,6 +61,19 @@ export const getServers =  (id, title, episode) => async (dispatch) =>{
         dispatch(togglePlay());
 
         dispatch({type: "TOGGLE_GETTING_SERVERS"})
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export const clearData =  () => async (dispatch) =>{
+    console.log("DESc state cleared")
+    try {
+        
+        dispatch({type: "CLEAR_INFO"})
+            
         
     } catch (error) {
         console.log(error)

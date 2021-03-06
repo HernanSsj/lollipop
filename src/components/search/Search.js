@@ -24,7 +24,7 @@ const Search = () =>{
         
     },[searchState.value])
  
-  const listItems = searchState.results? searchState.results.slice(0, 6).map((item, index)=> <SearchListItem index={index}image={item.image} title={item.title} type={item.type}/> ): null
+  const listItems = searchState.results? searchState.results.slice(0, 6).map((item, index)=> <SearchListItem index={index} info={item}/> ): null
     return(
         <>
         

@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner'
 import {closeIcon} from '../../utils/icons'
 import './Description-Style.css'
 import { useDispatch, useSelector } from "react-redux";
-import {getServers, toggleShow} from '../../actions/description'
+import {getServers, toggleShow, clearData} from '../../actions/description'
 
 const Description = (props) =>{
     const {show, info, getting_servers} = props.state
@@ -17,8 +17,8 @@ const Description = (props) =>{
     const dispatch = useDispatch()
 
     const genres = info? info.genres.map((genre, index)=><button  key={index} className={"genre-button"}>{genre}</button>) : null
-
-    const render = !info?.episodes ? null : info.episodes.reverse().map((episode, index)=>{
+    
+    const render = !info?.episodes ? null : info.episodes.map((episode, index)=>{
          if(episode.nextEpisodeDate===null){
              return null
          }else if(episode.episode){
@@ -36,8 +36,11 @@ const Description = (props) =>{
          }
        
      }) 
+     console.log("informacion", info)
   const closeDescription = () =>{
+   
     dispatch(toggleShow())
+    dispatch(clearData())
   }
     return (
         <div className={`${show? "anime-description-container": "invisible"}`}>

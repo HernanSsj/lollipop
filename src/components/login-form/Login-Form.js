@@ -1,69 +1,48 @@
-import React, {useState, useEffect, useCallback} from "react"
+import React, { useEffect } from "react"
 import './Login-Form.css';
 import Checkbox from "react-custom-checkbox";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import axios from 'axios'
 import { Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {getUser} from '../../actions/users'
+import {toggleShowPassword, toggleLoading, setError, fillEmail, fillPassword, clearLoginFormData} from '../../actions/login'
 import {revealedPasswordIcon, invisiblePasswordIcon, twitterIcon, facebookIcon, googleIcon, stayOnlineIcon, loginIcon, loginIconDisabled} from '../../utils/icons'
 
 const LoginForm = ()=>{
     const dispatch = useDispatch()
-    const [data, setData] = useState({
-        email: "",
-        password: ""
-
-    })
-    const [error, setError] = useState(false)
-    const [showPassword, setShowPassword] = useState(false)
-    const [stayOnline, setStayOnline] = useState(false)
-    const [loading, setLoading] = useState(false)
-
-    const fillEmail =  useCallback(e => {
-        
-        setData({...data, email: e.target.value})
-        
-      }, [data]);
-    
-    const fillPassword =  useCallback(e => {
-        setData({...data, password: e.target.value})
-        
-      }, [data]);      
-
-    
-    const viewPassword = useCallback( e=>{
-        setShowPassword(!showPassword)
-    },[showPassword])
-    const saveSession = useCallback( e=>{
-        setStayOnline(!stayOnline)
-    },[stayOnline])
-
+    const loginFormState = useSelector((state)=>state.loginForm)
+    const {email, password, error, loading, stayOnline, showPassword} = loginFormState
+  useEffect(()=>{
+    dispatch(clearLoginFormData())
+  },[])
     const authenticate = async (data) =>{
-        
-        setLoading(true)
-         axios.post("http://localhost:5000/auth/login", data, {withCredentials: true}).then((response)=>{
+    
+        dispatch(toggleLoading())
+
+         axios.post("http://localhost:5000/auth/login", {email, password}, {withCredentials: true}).then((response)=>{
          if(response.status===200) {
             setTimeout(function(){
-                setLoading(false)
+               dispatch(toggleLoading())
+               dispatch(clearLoginFormData)
             }, 2000);
-            dispatch(getUser())
-            
-           
+            dispatch(getUser()) 
            
          }else{
             setTimeout(function(){
-                setLoading(false)
-                setError(true)
+                dispatch(toggleLoading())
+                dispatch(setError(true))
+                dispatch(clearLoginFormData())
             }, 2000);
          }
           
        })
        .catch(()=>{
         setTimeout(function(){
-            setLoading(false)
-            setError(true)
+            dispatch(toggleLoading())
+            dispatch(setError(true))
+            dispatch(clearLoginFormData())
         }, 2000);
       
        })
@@ -75,6 +54,7 @@ const LoginForm = ()=>{
        let listener = window.addEventListener('message', (message) => {
            if(message.data){
             dispatch(getUser())
+            dispatch(clearLoginFormData())
            }
           
        });
@@ -86,11 +66,11 @@ const LoginForm = ()=>{
                         <h2>Iniciar sesión</h2>
                     </div>
                     <div className="input-box">
-                        <input className="username-input" required={true} maxLength = "128" value={data.email} onChange={fillEmail} autoFocus="autofocus"></input>
+                        <input className="username-input" required={true} maxLength = "128" value={email} onChange={(e)=>dispatch(fillEmail(e.target.value))} autoFocus="autofocus"></input>
                         <label className="usr-label">Email</label>
-                        <input className="password-input"  required={true} maxLength = "32" value={data.password} onChange={fillPassword} type={`${showPassword ? "text"  : "password"}`}></input>
+                        <input className="password-input"  required={true} maxLength = "32" value={password} onChange={(e)=>dispatch(fillPassword(e.target.value))} type={`${showPassword ? "text"  : "password"}`}></input>
                         <label className="pwd-label">Contraseña</label>
-                        <span onClick={viewPassword}>{showPassword ? revealedPasswordIcon : invisiblePasswordIcon}</span>
+                        <span onClick={()=>dispatch(toggleShowPassword())}>{showPassword ? revealedPasswordIcon : invisiblePasswordIcon}</span>
                     </div>
                     <div className={"login-error-message-container"}>
                         &nbsp;
@@ -115,7 +95,6 @@ const LoginForm = ()=>{
                           </div>}
                             name="my-input"
                             checked={false}
-                            onChange={saveSession}
                             borderColor="#EDEDED"
                             borderRadius="5px"
                             style={{ cursor: "pointer" }}
@@ -126,7 +105,7 @@ const LoginForm = ()=>{
                     <div className="buttom-box">
                             {loading?
                             <Loader type="Rings" color="#84cdfa"height={81} width={81}/>:
-                            <button disabled={data.email && data.password ? false : true} onClick={()=>authenticate(data)}>{data.email && data.password ? loginIcon : loginIconDisabled}</button>
+                            <button disabled={email && password ? false : true} onClick={()=>authenticate(email,password)}>{email && password ? loginIcon : loginIconDisabled}</button>
                             }
                     </div>
                     <div className="link-box">

@@ -18,7 +18,6 @@ const Lollipop =  (props)=>{
     const dispatch = useDispatch()
     const playerState = useSelector((state)=>state.player)
     const DescriptionState = useSelector((state=>state.description))
-    
     let history = useHistory()
     const [episodes, setEpisodes] = useState({})
     const [animes, setAnimes] = useState({})

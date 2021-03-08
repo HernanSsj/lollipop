@@ -6,92 +6,62 @@ import axios from 'axios'
 import { Link, useHistory} from 'react-router-dom'
 import {passwordCheck, nameCheck, emailCheck, checkComplete} from '../../utils/form-check'
 import {inputErrorIcon, loginIcon, loginIconDisabled} from '../../utils/icons'
+import { useDispatch, useSelector } from "react-redux";
+import  {fillName, fillEmail, fillPassword, fillRepeatedPassword, toggleShowPassword, toggleLoading, setError, setCompleted} from '../../actions/signup'
 
 const SignUpForm = ()=>{
+
      let history= useHistory()
-    const [data, setData] = useState({
-       name: "",
-       email: "",
-       password: "",
-       repeated_password: "",
+     const dispatch = useDispatch()
+     const signupFormState = useSelector((state)=>state.signupForm)
+     const {email, name, password, repeated_password, showCaptcha, loading, showPassword, error, completed} = signupFormState;
 
-    })
-    const [error, setError] = useState({
-        error: false,
-        name_error: false,
-        email_error: false,
-        password_error: false,
-        repeated_password_error: false,
-        error_message: null
-     })
-    const [showPassword, SetShowPassword] = useState(false)
-    const [completed, setCompleted] = useState(false)
-    const [showCaptcha, setShowCaptcha] = useState(false)
-    const [loading, setLoading] = useState(false)
+    useEffect(()=> {
 
-    const fillEmail =  useCallback(e => {
+            passwordCheck(password, repeated_password, error,  setError, dispatch)
+
+        },[password, repeated_password])
+
+      useEffect(()=>{
+
+          nameCheck(name, error,  setError, dispatch)
+      
+      }, [name])
+
+      useEffect(()=>{
+          
+        emailCheck(email, error, setError, dispatch)
         
-        setData({...data, email: e.target.value})
-      }, [data]);
-    const fillName =  useCallback(e => {
-        
-        setData({...data, name: e.target.value})
-      }, [data]);
+      },[email])
+      
 
-    const fillPassword =  useCallback(e => {
-        setData({...data, password: e.target.value})
-       
-      }, [data]);      
-    const fillRepeatedPassword =  useCallback(e => {
-        setData({...data, repeated_password: e.target.value})
-       
-      }, [data]); 
-   
+    useEffect(()=>{
 
-    const viewPassword = useCallback( e=>{
-        SetShowPassword(!showPassword)
-    },[showPassword])
-  
- useEffect(()=> {
-
-        passwordCheck(data, error,  setError)
-
-    },[data.password, data.repeated_password])
-
-  useEffect(()=>{
-
-      nameCheck(data, error,  setError)
-   
-  }, [data.name])
-
-  useEffect(()=>{
-       
-    emailCheck(data, error, setError)
-     
-  },[data.email])
-  
-
-  useEffect(()=>{
-    checkComplete(data, error, setCompleted)
-   
-  }, [error])
+        checkComplete(name, email, password, repeated_password, error, setCompleted, dispatch)
+      
+      }, [error])
 
     const signUp = async (data) =>{
    
-        setLoading(true)
+        dispatch(toggleLoading())
          axios.post("http://localhost:5000/auth/register", data).then((response)=>{
           setTimeout(function(){
-            setLoading(false)
+            dispatch(toggleLoading())
             history.push('/login')
         }, 2000);
         
        })
        .catch((error)=>{
-        setLoading(false)
-        setError({...error, error:true, email_error: true, error_message: "Email ya en uso"})
+        setTimeout(function(){
+          dispatch(toggleLoading())
+          dispatch(setError({error:true, email_error: true, error_message: "Email ya en uso"}))
+          console.log(error)
+      }, 2000);
+       
        })
       
     }
+    console.log(signupFormState)
     
     return(
                 <div className="register-container">
@@ -101,16 +71,16 @@ const SignUpForm = ()=>{
                     </div>
                     <div className="register-input-box">
 
-                        <input className="register-name-input" required={true} maxLength = "10" value={data.name}  onChange={fillName} autoFocus="autofocus"></input>
+                        <input className="register-name-input" required={true} maxLength = "10" value={name}  onChange={(e)=>dispatch(fillName(e.target.value))} autoFocus="autofocus"></input>
                         <label className="register-name-label">Nombre</label>
                         <span className={`${error.name_error ? "register-name-input-error " : "invisible"}`}>{inputErrorIcon}</span>
-                        <input className="register-email-input" required={true} maxLength = "320" value={data.email} onChange={fillEmail}></input>
+                        <input className="register-email-input" required={true} maxLength = "320" value={email} onChange={(e)=>dispatch(fillEmail(e.target.value))}></input>
                         <label className="register-email-label">Email</label>
                         <span className={`${error.email_error ? "register-email-input-error " : "invisible"}`}>{inputErrorIcon}</span>
-                        <input className="register-password-input"  type={"password"} required={true} maxLength = "16" value={data.password} onChange={fillPassword}></input>
+                        <input className="register-password-input"  type={"password"} required={true} maxLength = "16" value={password} onChange={(e)=>dispatch(fillPassword(e.target.value))}></input>
                         <label className="register-password-label">Contraseña</label>
                         <span className={`${error.password_error ? "register-password-input-error " : "invisible"}`}>{inputErrorIcon}</span>
-                        <input className="register-repeat-password-input" type={"password"} required={true} maxLength = "16" value={data.repeated_password} onChange={fillRepeatedPassword}></input>
+                        <input className="register-repeat-password-input" type={"password"} required={true} maxLength = "16" value={repeated_password} onChange={(e)=>dispatch(fillRepeatedPassword(e.target.value))}></input>
                         <label className="register-repeat-password-label">Repetir Contraseña</label>
                         <span className={`${error.repeated_password_error ? "register-repeated-password-input-error" : "invisible"}`}>{inputErrorIcon}</span>
                         
@@ -130,7 +100,7 @@ const SignUpForm = ()=>{
                     <div className={"register-buttom-box"}>
                             {loading?
                             <Loader type="Rings" color="#84cdfa"height={81} width={81}/>:
-                            <button onClick={()=>signUp(data)} disabled={completed ? false : true} >{completed ? loginIcon : loginIconDisabled}</button>
+                            <button onClick={()=>signUp({name, email, password, repeated_password})} disabled={completed ? false : true} >{completed ? loginIcon : loginIconDisabled}</button>
                             }
                     </div>
                     <div className="register-link-box">

@@ -75,7 +75,7 @@ const Description = (props) =>{
                     </div>
                 </>: loader }
                 {getting_servers ?<Loader className="elevated-loader" type="Rings" color="#84cdfa"height={81} width={81}/> : null}
-                {playerState.playing ? <Player playing={playerState.playing} servers={playerState.servers} title={info.title} episode={playerState.episode}></Player>: null}
+                {playerState.playing ? <Player state={playerState}></Player>: null}
              </div>
             
           

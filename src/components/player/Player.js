@@ -1,22 +1,19 @@
 import './Player-Style.css'
-import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
-import {togglePlay, cleanServers} from '../../actions/player'
+import { useDispatch} from "react-redux";
+import {togglePlay, cleanServers, setSelectedServer} from '../../actions/player'
 import {closeIcon} from '../../utils/icons'
-const Player = (props) =>{
-    const {servers, title, episode, playing} = props
-    console.log("player Props",props)
-    const dispatch = useDispatch()
-    const [selectedServer, setSelectedServer] = useState(servers[0])
 
-    const selectionButtons = servers.map((server, index)=><button className={`${server.title==selectedServer.title ? "selected-select-button" : "select-button"}`} onClick={()=>setSelectedServer(props.servers[index])}>{server.title}</button>)
-    const iframe = selectedServer ? <iframe className={"iframe"} key={selectedServer.code} src={selectedServer.code} frameBorder="0" allowFullScreen></iframe> : null
+const Player = (props) =>{
+    const dispatch = useDispatch()
+    const {servers, title, episode, playing, selected} = props.state
+    const selectionButtons = servers.map((server, index)=><button key={index} className={`${server.title===servers[selected].title ? "selected-select-button" : "select-button"}`} onClick={()=>dispatch(setSelectedServer(index))}>{server.title}</button>)
+    const iframe = <iframe className={"iframe"} key={servers[selected].code} title={servers[selected].title} src={servers[selected].code} frameBorder="0" allowFullScreen></iframe>
     
     const closePlayer= () =>{
         dispatch(cleanServers())
         dispatch(togglePlay())
     }
+
    return(
        <div className={`${playing? "player-container" : "invisible"}`}>
            <div className="player-title-container">

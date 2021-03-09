@@ -22,7 +22,6 @@ const Lollipop =  (props)=>{
     const [episodes, setEpisodes] = useState({})
     const [animes, setAnimes] = useState({})
     const [loading, setLoading] = useState(true)
-
    useEffect(()=>{
     async function fetchData() {
         let latestEpisodes = await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestEpisodesAdded")
@@ -55,8 +54,8 @@ const Lollipop =  (props)=>{
         <Navbar/>
         {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>: <div className="carousel-container"><ItemCarrousel episodes={episodes} animes={animes}/></div> }
         
-        {playerState.playing ? <Player playing={playerState.playing} servers={playerState.servers} title={playerState.title} episode={playerState.episode}></Player>: null}
-        {DescriptionState.show ? <Description state={DescriptionState} /> : null}
+        {playerState.playing ? <Player state={playerState}></Player>: null}
+        {DescriptionState.show ? <Description state={DescriptionState}/> : null}
         </div>
 }
 export default Lollipop

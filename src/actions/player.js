@@ -46,6 +46,18 @@ export const addEpisode = (episode) => async (dispatch) =>{
 }
 
 
+export const setSelectedServer = (server) => async (dispatch) =>{
+  try {
+     
+        dispatch({ type: "SET_SELECTED", payload: server});
+    
+      
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+
 export const cleanServers = () => async (dispatch) =>{
  
   try {

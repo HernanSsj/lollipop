@@ -1,53 +1,56 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import './Search-Style.css'
 import SearchListItem from '../search-list-item/Search-list-item'
 import {search} from '../../utils/request-caching'
+import { useDispatch, useSelector } from 'react-redux'
+import {fillValue, toggleLoading, fillResults} from '../../actions/search'
 const Search = () =>{
-    const [searchState, setSearchState] = useState({
-        results: null,
-        loading: false,
-        value: ""
-    })
-
+    const dispatch = useDispatch()
+    const searchState = useSelector((state)=>state.search)
+    const {value, loading, results} = searchState
     useEffect(()=>{
-       
         const fetchSearchResults = async (title)=>{
-            setSearchState({loading:true})
-            const response = await search(`https://protected-reaches-41658.herokuapp.com/api/v3/search/${title}`)
-           console.log(response)
-            setSearchState({results: response, loading:false})
+           dispatch(toggleLoading())
+            const result = await search(`https://protected-reaches-41658.herokuapp.com/api/v3/search/${title}`)
+
+            dispatch(fillResults(result))
+            dispatch(toggleLoading())
         }
-        if(searchState.value){
-            fetchSearchResults(searchState.value)
-        }
-        
-    },[searchState.value])
+        if(value!=="")fetchSearchResults(value)
+       
+    },[value])
  
-  const listItems = searchState.results? searchState.results.slice(0, 6).map((item, index)=> <SearchListItem index={index} info={item}/> ): null
+  const listItems = results? results.slice(0, 6).map((result, index)=> <SearchListItem index={index} info={result}/> ): null
     return(
         <>
         
         <input   
-                  value={searchState.value }
-                  onChange={(e)=> setSearchState({value:e.target.value})}
-                  maxLength={13}
-                  spellCheck="false" className={"search-input"}>
-        </input> 
-       
-        <ul className={`${ searchState.value!= "" ? "search-results" : "invisible"}`}  tabindex = "1" onBlur={(e) => {setSearchState({value:""})}}>
-                        <li className="top"></li>
-                       {
-                           searchState.loading? <li className="search-loading">Cargando..</li> :listItems
-                       }
-                       {
-                          !searchState.loading ? searchState.results === undefined? <li className="search-not-found">No se encontraron resultados</li> : null : null
-                       }
-                      <button className="see-more-button">Ver mas</button>
-                       
-        </ul> 
+            value={value }
+            placeholder={"Buscar.."}
+            onChange={(e)=> dispatch(fillValue(e.target.value))}
+            maxLength={13}
+            spellCheck="false" 
+            className={"search-input"}
+            onBlur={(e) => {
+                    setTimeout(() => dispatch(fillValue("")), 500)
+                    }
+                  }
+        >
                 
-
+        </input> 
+ 
+         <ul className={`${ value!= "" ? "search-results" : "invisible"}`} >
+         <li className="top"></li>
+            {
+                searchState.loading? <li className="search-loading">Cargando..</li> :listItems
+            }
+            {
+            !searchState.loading ? searchState.results === undefined? <li className="search-not-found">No se encontraron resultados</li> : null : null
+            }
+        <button className="see-more-button">Ver mas</button>
+        
+        </ul> 
         </>
     )
 }

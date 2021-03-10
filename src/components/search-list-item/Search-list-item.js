@@ -2,13 +2,9 @@ import { useDispatch } from 'react-redux'
 import './Search-list-item-style.css'
 import {fetchDescription, toggleShow} from '../../actions/description'
 const SearchListItem = (props) =>{
-    
-    
     const {image, title, type} = props.info
-
     const dispatch = useDispatch()
     const showDescription = (title) =>{
-        console.log("tried to show desc")
         dispatch(fetchDescription(title))
         dispatch(toggleShow())
     }

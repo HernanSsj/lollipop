@@ -3,8 +3,8 @@ const initialPlayerState = {
     playing: false,
     title: null,
     episode: null,
-    servers: null
-
+    servers: null,
+    selected: 0
 }
 const playerReducer = (state=initialPlayerState, action) =>{
     switch(action.type){
@@ -20,7 +20,8 @@ const playerReducer = (state=initialPlayerState, action) =>{
         case "CLEAR_SERVERS":
                 return {
                     ...state, 
-                    servers: action.payload
+                    servers: action.payload,
+                    selected: 0
                     };        
         case "ADD_TITLE":
             return {
@@ -30,6 +31,10 @@ const playerReducer = (state=initialPlayerState, action) =>{
             return {
                 ...state, episode: action.payload
             };
+        case "SET_SELECTED":
+                return {
+                    ...state, selected: action.payload
+                };
         default:
             return state;
     }

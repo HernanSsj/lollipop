@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+
 import Player from '../../components/player/Player'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
@@ -12,7 +12,6 @@ const Description = (props) =>{
     const {show, info, getting_servers} = props.state
 
     const playerState = useSelector((state)=>state.player)
-
     const loader = <Loader type="Rings" color="#84cdfa"height={81} width={81}/>
     const dispatch = useDispatch()
 
@@ -36,7 +35,7 @@ const Description = (props) =>{
          }
        
      }) 
-     console.log("informacion", info)
+
   const closeDescription = () =>{
    
     dispatch(toggleShow())
@@ -76,7 +75,7 @@ const Description = (props) =>{
                     </div>
                 </>: loader }
                 {getting_servers ?<Loader className="elevated-loader" type="Rings" color="#84cdfa"height={81} width={81}/> : null}
-                {playerState.playing ? <Player playing={playerState.playing} servers={playerState.servers} title={info.title} episode={playerState.episode}></Player>: null}
+                {playerState.playing ? <Player state={playerState}></Player>: null}
              </div>
             
           

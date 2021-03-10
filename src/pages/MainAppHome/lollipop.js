@@ -1,10 +1,9 @@
 
 import axios from 'axios'
 import './lollipop-style.css'
-import { useEffect, useState } from 'react'
-import { useSelector } from "react-redux";
+import { useEffect} from 'react'
+import { useSelector , useDispatch} from "react-redux";
 import { useHistory } from "react-router"
-import {useDispatch} from 'react-redux'
 import {deleteUser} from '../../actions/users'
 import Navbar from '../../components/navbar2/navbar'
 import ItemCarrousel from '../../components/carrousel/Carrousel'
@@ -12,50 +11,41 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 import Player from '../../components/player/Player'
 import Description from '../../components//AnimeDescription/Description'
+import {setAnimes, setEpisodes, toggleLoading} from '../../actions/home'
 
 
 const Lollipop =  (props)=>{
     const dispatch = useDispatch()
     const playerState = useSelector((state)=>state.player)
-    const DescriptionState = useSelector((state=>state.description))
+    const descriptionState = useSelector((state=>state.description))
+    const homeState = useSelector((state)=>state.home)
+    const {episodes, animes, loading} = homeState
     let history = useHistory()
-    const [episodes, setEpisodes] = useState({})
-    const [animes, setAnimes] = useState({})
-    const [loading, setLoading] = useState(true)
-   useEffect(()=>{
+    
+   useEffect((loading)=>{
     async function fetchData() {
         let latestEpisodes = await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestEpisodesAdded")
-       setEpisodes(latestEpisodes.data)
+       dispatch(setEpisodes(latestEpisodes.data))
        let latestAnime= await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestAnimeAdded")
-       setAnimes(latestAnime.data)
+       dispatch(setAnimes(latestAnime.data))
           
-      console.log(latestAnime.data)
-       setTimeout(() => {
-               setLoading(false)
-            }, 1000);
+       if(loading){
+        setTimeout(() => {
+            dispatch(toggleLoading())
+         }, 1000);
+       }
     }
      
-        fetchData()
+        fetchData(loading)
      
         },[])
-   const logout = () => {
-       
-    axios.get('http://localhost:5000/auth/logout', {withCredentials: true}).then(()=>{
-        
-        dispatch(deleteUser())
-
-        // history.push("/")
-    })
-    .catch(()=>dispatch(deleteUser()))
-   }
-
     return <div className='main-app-container'>
 
         <Navbar/>
         {loading ?  <Loader type="Rings" color="#84cdfa"height={81} width={81}/>: <div className="carousel-container"><ItemCarrousel episodes={episodes} animes={animes}/></div> }
         
         {playerState.playing ? <Player state={playerState}></Player>: null}
-        {DescriptionState.show ? <Description state={DescriptionState}/> : null}
+        {descriptionState.show ? <Description state={descriptionState}/> : null}
         </div>
 }
 export default Lollipop

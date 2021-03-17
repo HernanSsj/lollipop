@@ -27,12 +27,8 @@ const Navbar = ()=>{
                 <div className="logo-container"></div>
                 <div className={"navbar-links2" }>
                     <ul>
-                        <li><Link to="/"><button >Home</button></Link></li>
-                        <li><Link to="/login"><button >Favorites</button></Link></li>
-                        <li><Link to="/login"><button >Categories</button></Link></li>
-                        <li><Link to="/login"><button >Movies</button></Link></li>
-                        
-                       
+                        <li><Link to="/"><button >Inicio</button></Link></li>
+                        <li><Link to="/favorites"><button >Favoritos</button></Link></li>
                     </ul>
 
                 </div>

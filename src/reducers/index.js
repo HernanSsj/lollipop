@@ -7,4 +7,5 @@ import loginForm from './login'
 import signupForm from './signup'
 import search from './search'
 import home from './home'
-export const reducers = combineReducers({ user , player, description, loginForm, signupForm, search, home});
+import favorites from './favorites'
+export const reducers = combineReducers({ user , player, description, loginForm, signupForm, search, home, favorites});

@@ -69,7 +69,7 @@ export const getServers =  (id, title, episode) => async (dispatch) =>{
 
 
 export const clearData =  () => async (dispatch) =>{
-    console.log("DESc state cleared")
+    
     try {
         
         dispatch({type: "CLEAR_INFO"})

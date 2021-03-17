@@ -3,15 +3,17 @@ import axios from "axios";
 import Player from '../../components/player/Player'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
-import {closeIcon} from '../../utils/icons'
+import {closeIcon, heartIcon} from '../../utils/icons'
 import './Description-Style.css'
 import { useDispatch, useSelector } from "react-redux";
 import {getServers, toggleShow, clearData} from '../../actions/description'
+import {addFavorite, removeFavorite} from '../../actions/favorites'
 
 const Description = (props) =>{
     const {show, info, getting_servers} = props.state
 
     const playerState = useSelector((state)=>state.player)
+    const favorites = useSelector((state)=>state.favorites)
     const loader = <Loader type="Rings" color="#84cdfa"height={81} width={81}/>
     const dispatch = useDispatch()
 
@@ -41,6 +43,20 @@ const Description = (props) =>{
     dispatch(toggleShow())
     dispatch(clearData())
   }
+  const setFavorite = () =>{
+    let favorite  = {
+        title: info.title, 
+        id: info.id,
+        poster: info.poster
+    }
+      if(thisFavorite===-1){
+        dispatch(addFavorite(favorite))
+        }else{
+            dispatch(removeFavorite(favorite))
+          }
+      }
+  const thisFavorite  = favorites.findIndex(x => x.title === info?.title)
+  
     return (
         <div className={`${show? "anime-description-container": "invisible"}`}>
                 {info? <>
@@ -53,6 +69,7 @@ const Description = (props) =>{
                    
                     <div className="info-container">
                     <button className="close-description" onClick={()=>closeDescription()}>{closeIcon}</button>
+                    <button className={thisFavorite===-1 ?  "save-favorite" : "remove-favorite" } onClick={()=>setFavorite()}>{heartIcon}</button>
                             <span className="anime-title">{info.title}</span>
                              <div className="genres-container">
                             {genres}

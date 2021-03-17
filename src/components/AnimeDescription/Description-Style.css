@@ -158,3 +158,31 @@
     color: #fff;
     border: 2px solid #fff;
 }
+.save-favorite{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    right: 70px;
+    top: 5px;
+    background-color: #3D3A41;
+    border-radius: 50%;
+    color: gray;
+    border: 2px solid #fff;
+}
+.remove-favorite{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    right: 70px;
+    top: 5px;
+    background-color: #3D3A41;
+    border-radius: 50%;
+    color: #fff;
+    border: 2px solid #fff;
+}

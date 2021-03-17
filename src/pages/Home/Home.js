@@ -1,4 +1,3 @@
-import React, {useState, useEffect, useCallback} from "react"
 import './Home-Styles.css';
 import {useHistory} from 'react-router-dom'
 const Home = ()=>{
@@ -9,9 +8,9 @@ const Home = ()=>{
         <div className="home-container">
             <div className="about-section">
                 <div className="description">
-                    <span className="description-span">Anime was never that simple</span>
-                    <h2>With Lollipop! you can watch your favorite anime episodes and movies in a easy way.</h2>
-                    <button onClick={goToLogin}>Get Started!</button>
+                    <span className="description-span">Ver anime nunca fue tan simple</span>
+                    <h2>Con Lollipop! puedes ver tus animes y peliculas favoritas, de una manera facil y rapida</h2>
+                    <button onClick={goToLogin}>Comenzar!</button>
                 </div>
                    <div className="image-container">
                      <img  width={"400px"} src="https://i.imgur.com/GOweneZ.png"></img>

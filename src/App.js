@@ -16,6 +16,7 @@ import Lollipop  from "./pages/MainAppHome/lollipop";
 import PublicRoute  from "./components/protected-route/public-route";
 import PrivateRoute from './components/protected-route/private-route'
 import Login from './pages/Login/Login';
+import Favorites from './pages/Favorites/Favorites'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <PublicRoute path='/login' component={Login}/>
           <PublicRoute path='/signup' component={SignUp}/>
           <PrivateRoute path='/app' component={Lollipop}/>
+          <PrivateRoute path='/favorites' component={Favorites}/>
 
     </div>
   );

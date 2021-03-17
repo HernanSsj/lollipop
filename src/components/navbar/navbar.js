@@ -15,9 +15,9 @@ const Navbar = ()=>{
                 
                 <div className={mobile ? "navbar-links active" : "navbar-links" }>
                     <ul>
-                        <li><Link to="/"><button >Home</button></Link></li>
-                        <li><Link to="/login"><button >Login</button></Link></li>
-                        <li><Link to="/signup"><button >Sign up</button></Link></li>
+                        <li><Link to="/"><button >Inicio</button></Link></li>
+                        <li><Link to="/login"><button >Ingresar</button></Link></li>
+                        <li><Link to="/signup"><button >Registro</button></Link></li>
                     </ul>
                 </div>
                 <button className="toggle-button" onClick={show}>{menuIcon}</button>

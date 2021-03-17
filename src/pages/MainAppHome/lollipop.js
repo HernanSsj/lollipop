@@ -21,8 +21,8 @@ const Lollipop =  (props)=>{
     const homeState = useSelector((state)=>state.home)
     const {episodes, animes, loading} = homeState
     let history = useHistory()
-    
-   useEffect((loading)=>{
+   useEffect(()=>{
+
     async function fetchData() {
         let latestEpisodes = await axios.get("https://salty-hollows-03690.herokuapp.com/api/v1/LatestEpisodesAdded")
        dispatch(setEpisodes(latestEpisodes.data))
@@ -37,7 +37,6 @@ const Lollipop =  (props)=>{
     }
      
         fetchData(loading)
-     
         },[])
     return <div className='main-app-container'>
 
